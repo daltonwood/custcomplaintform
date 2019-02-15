@@ -116,8 +116,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="CustComplaints\CustComplaints.aspx" />
-    <Content Include="CustComplaints\logo.png" />
+    <Content Include="CustComplaints\DispIssues.xml" />
+    <Content Include="CustComplaints\calendarico.png" />
+    <Content Include="CustComplaints\EditForm.aspx" />
+    <Content Include="CustComplaints\GCSComplaint.aspx" />
+    <Content Include="CustComplaints\MobileComplaint.aspx" />
+    <Content Include="CustComplaints\WebComplaint.aspx" />
+    <Content Include="CustComplaints\Locations.xml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -168,12 +173,33 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="CustComplaints\CustComplaints.aspx.cs">
-      <DependentUpon>CustComplaints.aspx</DependentUpon>
+    <Compile Include="CustComplaints\EditForm.aspx.cs">
+      <DependentUpon>EditForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustComplaints\CustComplaints.aspx.designer.cs">
-      <DependentUpon>CustComplaints.aspx</DependentUpon>
+    <Compile Include="CustComplaints\EditForm.aspx.designer.cs">
+      <DependentUpon>EditForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustComplaints\GCSComplaint.aspx.cs">
+      <DependentUpon>GCSComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustComplaints\GCSComplaint.aspx.designer.cs">
+      <DependentUpon>GCSComplaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustComplaints\MobileComplaint.aspx.cs">
+      <DependentUpon>MobileComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustComplaints\MobileComplaint.aspx.designer.cs">
+      <DependentUpon>MobileComplaint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustComplaints\WebComplaint.aspx.cs">
+      <DependentUpon>WebComplaint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustComplaints\WebComplaint.aspx.designer.cs">
+      <DependentUpon>WebComplaint.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

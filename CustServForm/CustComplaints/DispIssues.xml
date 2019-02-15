@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<root>
+  <Account>
+    <issue>Sign in</issue>
+    <issue>Can't edit profile</issue>
+  </Account>
+  <Discount>
+    <issue></issue>
+  </Discount>
+  <Rate>
+    <issue></issue>
+  </Rate>
+  <PostRes>
+    <issue></issue>
+  </PostRes>
+  <EaseOfUse>
+    <issue></issue>
+  </EaseOfUse>
+</root>

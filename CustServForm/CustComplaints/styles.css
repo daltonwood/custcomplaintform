@@ -14,13 +14,11 @@ ul {
     overflow: hidden;
     background-color: #051E3E;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0.1px 0.1px 5px 5px;
 }
 
 li {
-    float: left;
-    padding-left: 50px;
-    padding-right: 50px;
+    float:left;
 }
 
 .active {
@@ -35,10 +33,10 @@ li a {
     text-decoration: none;
 }
 
-    li a:hover {
-        background-color: #0e305c;
-    }
+li a:hover {
+    background-color: #0e305c;
+}
 
 .main-content {
-    padding: 15px;
+    padding: 30px;
 }
