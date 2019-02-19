@@ -24,6 +24,19 @@
         <asp:dropdownlist runat="server" ID="locDDList" Width="170px" Height="25px"></asp:dropdownlist>
         </asp:TableCell>
     </asp:TableRow>
+
+    <asp:TableRow>
+        <asp:TableCell>
+            <asp:Label runat="server">Is the Customer a member?</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell>
+            <asp:RadioButtonList runat="server">
+                <asp:ListItem>Yes</asp:ListItem>
+                <asp:ListItem>No</asp:ListItem>
+            </asp:RadioButtonList>
+        </asp:TableCell>
+    </asp:TableRow>
+
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Date/Time of Incident</asp:Label>
@@ -33,7 +46,7 @@
         </asp:TableCell>
         <asp:TableCell>
             <asp:ImageButton runat="server" src="calendarico.png" Width="25px" OnClick="showCal" AutoPostBack="true"/>
-            <asp:Calendar runat="server" Visible="false" ID="calendar" AutoPostBack="true" OnSelectionChanged="dateChanged"></asp:Calendar>
+            <asp:Calendar runat="server" style="z-index: 100; position:absolute" BackColor="White" Visible="false" ID="calendar" AutoPostBack="true" OnSelectionChanged="dateChanged"></asp:Calendar>
         </asp:TableCell>
     </asp:TableRow>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent" Width="500px">
@@ -57,13 +70,7 @@
             <asp:Label runat="server">Disposition</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:DropDownList runat="server" AutoPostBack="true" Width="174px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged">
-                <asp:ListItem text="Accounts"></asp:ListItem>
-                <asp:ListItem text="Discounts"></asp:ListItem>
-                <asp:ListItem text="Rates"></asp:ListItem>
-                <asp:ListItem text="Post Reservation"></asp:ListItem>
-                <asp:ListItem text="Ease of Use"></asp:ListItem>
-            </asp:DropDownList>
+            <asp:DropDownList runat="server" AutoPostBack="true" Width="174px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged"></asp:DropDownList>
         </asp:TableCell>
         <asp:TableCell>
             <asp:DropDownList runat="server" AutoPostBack="true" Width="150px" Height="25px" ID="dispDetails">

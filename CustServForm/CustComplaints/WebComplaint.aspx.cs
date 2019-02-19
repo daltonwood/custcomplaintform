@@ -21,6 +21,18 @@ namespace CustServForm
                 dispDetails.Items.Add("Sign In");
                 dispDetails.Items.Add("Can't edit profile");
                 calendar.Visible = false;
+
+                XmlDocument dispDoc = new XmlDocument();
+                var dispPath = Server.MapPath(@"~/CustComplaints/DispIssues.xml");
+                dispDoc.Load(dispPath);
+                dispList.Items.Clear();
+                XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode n in dispNode)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Name;
+                    dispList.Items.Add(i);
+                }
             }
             XmlNodeList node = locDoc.SelectNodes("/root/location");
             foreach (XmlNode n in node)
@@ -68,8 +80,16 @@ namespace CustServForm
         public void showCal(object sender, EventArgs e)
         {
             if (calendar.Visible.Equals(false))
+            {
                 calendar.Visible = true;
+            }
             else { calendar.Visible = false; }
         }
+
+        /*
+            public void submitClicked(object sender, EventArgs e)
+            On button click, take all data and store in new class "FormData"  
+            Use new class to export data to Samanage API
+        */
     }
 }

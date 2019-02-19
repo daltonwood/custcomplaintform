@@ -23,6 +23,18 @@ namespace CustServForm
                 dispDetails.Items.Add("Sign In");
                 dispDetails.Items.Add("Can't edit profile");
                 calendar.Visible = false;
+
+                XmlDocument dispDoc = new XmlDocument();
+                var dispPath = Server.MapPath(@"~/CustComplaints/DispIssues.xml");
+                dispDoc.Load(dispPath);
+                dispList.Items.Clear();
+                XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode n in dispNode)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Name;
+                    dispList.Items.Add(i);
+                }
             }
             XmlNodeList node = locDoc.SelectNodes("/root/location");
             foreach(XmlNode n in node)

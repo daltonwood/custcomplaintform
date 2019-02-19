@@ -40,22 +40,13 @@ namespace CustServForm.CustComplaints {
         protected global::System.Web.UI.WebControls.TextBox locText;
         
         /// <summary>
-        /// submitButton control.
+        /// newDisp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submitButton;
-        
-        /// <summary>
-        /// submit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label submit;
+        protected global::System.Web.UI.WebControls.TextBox newDisp;
         
         /// <summary>
         /// dispList control.
@@ -76,12 +67,12 @@ namespace CustServForm.CustComplaints {
         protected global::System.Web.UI.WebControls.TextBox dispIssueText;
         
         /// <summary>
-        /// dispIssue control.
+        /// submitBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button dispIssue;
+        protected global::System.Web.UI.WebControls.Button submitBtn;
     }
 }
