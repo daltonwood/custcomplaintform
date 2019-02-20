@@ -1,0 +1,36 @@
+{
+  "incident": {
+    "name": "Incident_Title",
+    "priority": "Medium",
+    "category": { "name": "" },
+    "subcategory": { "name": "Incident subcategory" },
+    "requester": { "email": "demo@samanage.com" },
+    "description": "Incident description",
+    "due_at": "",
+    "assignee": { "email": "demo@samanage.com" },
+    "incidents": {
+      "incident": [
+        { "number": "12345" },
+        { "number": "12345" }
+      ]
+    },
+    "Problem": [ { "number": "123" } ],
+    "changes": [ { "number": "123" } ],
+    "Solutions": { "solution": [ { "number": "123" } ] },
+    "assets": [ { "id": "123" } ],
+    "mobiles": [ { "id": "123" } ],
+    "configuration_items": [ { "id": "123" } ],
+    "custom_fields_values": {
+      "custom_fields_value": [
+        {
+          "name": "field_name",
+          "value": "content"
+        },
+        {
+          "name": "field_name",
+          "value": "content"
+        }
+      ]
+    }
+  }
+}

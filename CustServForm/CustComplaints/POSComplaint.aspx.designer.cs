@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CustServForm {
+namespace CustServForm.CustComplaints {
     
     
-    public partial class WebComplaint {
+    public partial class POSComplaint {
         
         /// <summary>
-        /// webPanel control.
+        /// panel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel webPanel;
+        protected global::System.Web.UI.UpdatePanel panel;
         
         /// <summary>
         /// locDDList control.
@@ -58,13 +58,13 @@ namespace CustServForm {
         protected global::System.Web.UI.WebControls.TextBox FPIDTxtBox;
         
         /// <summary>
-        /// dateTextBox control.
+        /// gcsDateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dateTextBox;
+        protected global::System.Web.UI.WebControls.TextBox gcsDateTextBox;
         
         /// <summary>
         /// calendar control.

@@ -1,5 +1,4 @@
-﻿using CustServForm.CustComplaints;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,30 +8,24 @@ using System.Xml;
 
 namespace CustServForm
 {
-    public partial class WebComplaint : Page
+    public partial class AppComplaint : Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
+            XmlDocument locDoc = new XmlDocument();
+            locDoc.Load(path);
+            locDDList.Items.Clear();
             if (!IsPostBack)
             {
-                var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
-                XmlDocument locDoc = new XmlDocument();
-                locDoc.Load(path);
-                locDDList.Items.Clear();
-                XmlNodeList node = locDoc.SelectNodes("/root/location");
-                foreach (XmlNode n in node)
-                {
-                    ListItem i = new ListItem();
-                    i.Text = n.InnerText.ToString();
-                    locDDList.Items.Add(i);
-                }
                 dispDetails.Items.Add("Sign In");
                 dispDetails.Items.Add("Can't edit profile");
                 calendar.Visible = false;
 
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+                var dispPath = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
                 XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
@@ -42,10 +35,24 @@ namespace CustServForm
                     i.Text = n.Name;
                     dispList.Items.Add(i);
                 }
+
+                //Mobile OS List
+                MobileOSList.Items.Add("Android");
+                MobileOSList.Items.Add("iOS");
             }
+            XmlNodeList node = locDoc.SelectNodes("/root/location");
+            foreach(XmlNode n in node)
+            {
+                ListItem i = new ListItem();
+                i.Text = n.InnerText.ToString();
+                locDDList.Items.Add(i);
+            }
+
+        }
+        public void submitForm(object sender, EventArgs e)
+        {
             
         }
-
         public void originChanged(object sender, EventArgs e)
         {
             if (Mobilelist1.SelectedIndex == 0)
@@ -65,12 +72,16 @@ namespace CustServForm
                 originTxtBox.Attributes.Add("Placeholder", "Enter any additional info here");
             }
         }
-
+        public void dateChanged(object sender, EventArgs e)
+        {
+            dateTextBox.Text = (calendar.SelectedDate.ToShortDateString());
+            calendar.Visible = false;
+        }
         public void dispListChanged(object sender, EventArgs e)
         {
             XmlDocument dispDoc = new XmlDocument();
             dispDetails.Items.Clear();
-            var dispPath = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+            var dispPath = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
             dispDoc.Load(dispPath);
             XmlNodeList dispNode = dispDoc.GetElementsByTagName(dispList.SelectedItem.Value);
             dispDetails.Items.Clear();
@@ -82,40 +93,28 @@ namespace CustServForm
             }
         }
 
-        public void dateChanged(object sender, EventArgs e)
-        {
-            dateTextBox.Text = (calendar.SelectedDate.ToShortDateString());
-            calendar.Visible = false;
-        }
-
-        public void fp_selectedIndexChanged(object sender, EventArgs e)
-        {
-            if (FP_Radio.SelectedItem.Value == "1")
-            {
+        public void fp_selectedIndexChanged(object sender, EventArgs e) {
+            if (FP_Radio.SelectedItem.Value == "1") {
                 FPIDTxtBox.Visible = true;
                 FPTier.Visible = true;
             }
-            else
-            {
+            else {
                 FPIDTxtBox.Visible = false;
                 FPTier.Visible = false;
+
             }
         }
-
         public void showCal(object sender, EventArgs e)
         {
+            updatePage();
             if (calendar.Visible.Equals(false))
-            {
                 calendar.Visible = true;
-            }
             else { calendar.Visible = false; }
         }
-
-        public void submitForm(object sender, EventArgs e)
+        public void updatePage()
         {
-            XmlDocument samangeForm = new XmlDocument();
-            var formPath = Server.MapPath(@"~/CustComplaints/IncidentForm.xml");
-            samangeForm.Load(formPath);
+
         }
+
     }
 }

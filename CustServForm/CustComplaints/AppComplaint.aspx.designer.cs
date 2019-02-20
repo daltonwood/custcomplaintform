@@ -10,16 +10,25 @@
 namespace CustServForm {
     
     
-    public partial class WebComplaint {
+    public partial class AppComplaint {
         
         /// <summary>
-        /// webPanel control.
+        /// locData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel webPanel;
+        protected global::System.Web.UI.WebControls.XmlDataSource locData;
+        
+        /// <summary>
+        /// mobilePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel mobilePanel;
         
         /// <summary>
         /// locDDList control.
@@ -74,6 +83,15 @@ namespace CustServForm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar calendar;
+        
+        /// <summary>
+        /// MobileOSList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList MobileOSList;
         
         /// <summary>
         /// Mobilelist1 control.

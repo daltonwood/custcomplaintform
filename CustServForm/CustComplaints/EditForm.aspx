@@ -8,8 +8,10 @@
 <!-- Navbar -->
 <ul>
     <li><a href="WebComplaint.aspx">Website</a></li>
-    <li><a href="MobileComplaint.aspx">Mobile</a></li>
-    <li><a href="GCSComplaint.aspx">GCS/Kiosk</a></li>
+    <li><a href="AppComplaint.aspx">App</a></li>
+    <li><a href="KioskGate.aspx">Gate/Kiosk</a></li>
+    <li><a href="POSComplaint.aspx">POS</a></li>
+    <li><a href="Valet.aspx">Valet App</a></li>
     <li style="float: right"><a class="active" href="EditForm.aspx">Edit Form</a></li>
 </ul>
 <!-- Main form content -->
@@ -18,29 +20,46 @@
 <div class="main-content">
 <asp:Table runat="server">
     <asp:TableRow>
+        <asp:TableCell>           
+            <asp:Label runat="server">What would you like to edit?</asp:Label>
+        </asp:TableCell>
+    </asp:TableRow>
+    <asp:TableRow>
         <asp:TableCell>
             <asp:TextBox runat="server" placeholder="Add Location" ID="locText"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+       <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
-            <asp:Label runat="server">Add New Disposition</asp:Label>
-        </asp:TableCell>
-        <asp:TableCell BorderWidth="15px" BorderColor="Transparent">
-            <asp:TextBox runat="server" ID="newDisp"></asp:TextBox>
+            <asp:RadioButtonList runat="server" OnSelectedIndexChanged="disp_selectedIndexChanged"  AutoPostBack="true" ID="Disp_Radio">
+                <asp:ListItem Value="1">Website</asp:ListItem>
+                <asp:ListItem Value="2">App</asp:ListItem>
+                <asp:ListItem Value="3">Gate/Kiosk</asp:ListItem>
+                <asp:ListItem Value="4">POS</asp:ListItem>
+                <asp:ListItem Value="5">Valet</asp:ListItem>
+            </asp:RadioButtonList>        
         </asp:TableCell>
      </asp:TableRow>
 
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
-            <asp:Label runat="server" >Disposition</asp:Label>
-        </asp:TableCell>
-        <asp:TableCell>
-            <asp:DropDownList runat="server" autopostback="true" Width="174px" Height="25px" ID="dispList"></asp:DropDownList>
+            <asp:Label runat="server" Visible="false" ID="DispLabel">Add New Disposition</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="15px" BorderColor="Transparent">
-            <asp:TextBox runat="server" ID="dispIssueText"></asp:TextBox>
+            <asp:TextBox runat="server" Visible="false" ID="newDisp"></asp:TextBox>
+        </asp:TableCell>
+     </asp:TableRow>
+
+    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+        <asp:TableCell>
+            <asp:Label runat="server" Visible="false" ID="DispLabel2">Disposition</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell>
+            <asp:DropDownList runat="server" autopostback="true" Width="174px" Height="25px" ID="dispList" Visible="false"></asp:DropDownList>
+        </asp:TableCell>
+        <asp:TableCell BorderWidth="15px" BorderColor="Transparent">
+            <asp:TextBox runat="server"  Visible="false" ID="dispIssueText"></asp:TextBox>
         </asp:TableCell>
      </asp:TableRow>
     <asp:TableRow>

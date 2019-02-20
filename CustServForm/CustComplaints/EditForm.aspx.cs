@@ -17,7 +17,7 @@ namespace CustServForm.CustComplaints
                 XmlDocument locDoc = new XmlDocument();
                 XmlDocument dispDoc = new XmlDocument();
                 var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
-                var dispPath = Server.MapPath(@"~/CustComplaints/DispIssues.xml");
+                var dispPath = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
                 locDoc.Load(path);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
@@ -30,6 +30,113 @@ namespace CustServForm.CustComplaints
                     dispList.Items.Add(i);
                 }
             }
+        }
+
+        public void disp_selectedIndexChanged(object sender, EventArgs e) {
+            if (Disp_Radio.SelectedItem.Value == "1")
+            {
+                XmlDocument dispDoc = new XmlDocument();
+                var dispPath = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+                dispDoc.Load(dispPath);
+                dispList.Items.Clear();
+
+                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode n in node)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Name;
+                    dispList.Items.Add(i);
+                }
+
+                DispLabel.Visible = true;
+                newDisp.Visible = true;
+                DispLabel2.Visible = true;
+                dispList.Visible = true;
+                dispIssueText.Visible = true;
+            }
+            else if (Disp_Radio.SelectedItem.Value == "2")
+            {
+                XmlDocument dispDoc = new XmlDocument();
+                var dispPath = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
+                dispDoc.Load(dispPath);
+                dispList.Items.Clear();
+
+                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode n in node)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Name;
+                    dispList.Items.Add(i);
+                }
+
+                DispLabel.Visible = true;
+                newDisp.Visible = true;
+                DispLabel2.Visible = true;
+                dispList.Visible = true;
+                dispIssueText.Visible = true;
+            }
+            else if(Disp_Radio.SelectedItem.Value == "3")
+            {
+                XmlDocument dispDoc = new XmlDocument();
+                var dispPath = Server.MapPath(@"~/CustComplaints/KioskGateDispIssues.xml");
+                dispDoc.Load(dispPath);
+                dispList.Items.Clear();
+
+                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode n in node)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Name;
+                    dispList.Items.Add(i);
+                }
+                DispLabel.Visible = true;
+                newDisp.Visible = true;
+                DispLabel2.Visible = true;
+                dispList.Visible = true;
+                dispIssueText.Visible = true;
+            }
+            else if (Disp_Radio.SelectedItem.Value == "4")
+            {
+                XmlDocument dispDoc = new XmlDocument();
+                var dispPath = Server.MapPath(@"~/CustComplaints/POSDispIssues.xml");
+                dispDoc.Load(dispPath);
+                dispList.Items.Clear();
+
+                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode n in node)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Name;
+                    dispList.Items.Add(i);
+                }
+
+                DispLabel.Visible = true;
+                newDisp.Visible = true;
+                DispLabel2.Visible = true;
+                dispList.Visible = true;
+                dispIssueText.Visible = true;
+            }
+            else if (Disp_Radio.SelectedItem.Value == "5")
+                {
+                    XmlDocument dispDoc = new XmlDocument();
+                    var dispPath = Server.MapPath(@"~/CustComplaints/ValetDispIssues.xml");
+                    dispDoc.Load(dispPath);
+                    dispList.Items.Clear();
+
+                    XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
+                    foreach (XmlNode n in node)
+                    {
+                        ListItem i = new ListItem();
+                        i.Text = n.Name;
+                        dispList.Items.Add(i);
+                    }
+
+                    DispLabel.Visible = true;
+                    newDisp.Visible = true;
+                    DispLabel2.Visible = true;
+                    dispList.Visible = true;
+                    dispIssueText.Visible = true;
+                }
         }
 
         public void submitData(object sender, EventArgs e)
@@ -68,7 +175,15 @@ namespace CustServForm.CustComplaints
         private void UpdateDispIssues()
         {
             XmlDocument dispDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/DispIssues.xml");
+            var path = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+            if (Disp_Radio.SelectedItem.Value == "1")
+            {
+                path = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+            }
+            else if(Disp_Radio.SelectedItem.Value == "2")
+            {
+                path = Server.MapPath(@"~/CustComplaints/KioskGateDispIssues.xml");
+            }
             dispDoc.Load(path);
             string val = dispList.Text;
             string nodeLoc = ("/root/" + val);
@@ -81,7 +196,15 @@ namespace CustServForm.CustComplaints
         private void updateDisp()
         {
             XmlDocument dispDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/DispIssues.xml");
+            var path = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+            if (Disp_Radio.SelectedItem.Value == "1")
+            {
+                path = Server.MapPath(@"~/CustComplaints/WebMobDispIssues.xml");
+            }
+            else if (Disp_Radio.SelectedItem.Value == "2")
+            {
+                path = Server.MapPath(@"~/CustComplaints/KioskGateDispIssues.xml");
+            }
             dispDoc.Load(path);
             string val = newDisp.Text;
             XmlNode root = dispDoc.DocumentElement;
