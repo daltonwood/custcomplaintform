@@ -72,7 +72,7 @@ namespace CustServForm
             dispDetails.Items.Clear();
             var dispPath = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
             dispDoc.Load(dispPath);
-            XmlNodeList dispNode = dispDoc.GetElementsByTagName(dispList.SelectedItem.Value);
+            XmlNodeList dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
             dispDetails.Items.Clear();
             foreach (XmlNode n in dispNode)
             {

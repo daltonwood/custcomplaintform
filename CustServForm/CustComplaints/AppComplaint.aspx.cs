@@ -24,6 +24,7 @@ namespace CustServForm
                 dispDetails.Items.Add("Can't edit profile");
                 calendar.Visible = false;
 
+                //Load Disposition Categories into Drop Down Menu
                 XmlDocument dispDoc = new XmlDocument();
                 var dispPath = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
                 dispDoc.Load(dispPath);
@@ -32,7 +33,7 @@ namespace CustServForm
                 foreach (XmlNode n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name;
+                    i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
 
@@ -40,11 +41,12 @@ namespace CustServForm
                 MobileOSList.Items.Add("Android");
                 MobileOSList.Items.Add("iOS");
             }
+            //Load Location XML list into Location Drop Down Menu
             XmlNodeList node = locDoc.SelectNodes("/root/location");
             foreach(XmlNode n in node)
             {
                 ListItem i = new ListItem();
-                i.Text = n.InnerText.ToString();
+                i.Text = n.InnerText.ToString().Replace('_', ' ');
                 locDDList.Items.Add(i);
             }
 
@@ -77,13 +79,13 @@ namespace CustServForm
             dateTextBox.Text = (calendar.SelectedDate.ToShortDateString());
             calendar.Visible = false;
         }
+        //Load new disposition issues when a new disposition category is selected
         public void dispListChanged(object sender, EventArgs e)
         {
             XmlDocument dispDoc = new XmlDocument();
-            dispDetails.Items.Clear();
             var dispPath = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
             dispDoc.Load(dispPath);
-            XmlNodeList dispNode = dispDoc.GetElementsByTagName(dispList.SelectedItem.Value);
+            XmlNodeList dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
             dispDetails.Items.Clear();
             foreach (XmlNode n in dispNode)
             {

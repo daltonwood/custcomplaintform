@@ -20,11 +20,6 @@
 <div class="main-content">
 <asp:Table runat="server">
     <asp:TableRow>
-        <asp:TableCell>           
-            <asp:Label runat="server">What would you like to edit?</asp:Label>
-        </asp:TableCell>
-    </asp:TableRow>
-    <asp:TableRow>
         <asp:TableCell>
             <asp:TextBox runat="server" placeholder="Add Location" ID="locText"></asp:TextBox>
         </asp:TableCell>
@@ -59,7 +54,7 @@
             <asp:DropDownList runat="server" autopostback="true" Width="174px" Height="25px" ID="dispList" Visible="false"></asp:DropDownList>
         </asp:TableCell>
         <asp:TableCell BorderWidth="15px" BorderColor="Transparent">
-            <asp:TextBox runat="server"  Visible="false" ID="dispIssueText"></asp:TextBox>
+            <asp:TextBox runat="server"  Visible="false" ID="dispIssueText" placeholder="Add Issue"></asp:TextBox>
         </asp:TableCell>
      </asp:TableRow>
     <asp:TableRow>

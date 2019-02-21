@@ -25,7 +25,7 @@ namespace CustServForm.CustComplaints
             foreach (XmlNode n in node)
             {
                 ListItem i = new ListItem();
-                i.Text = n.InnerText.ToString();
+                i.Text = n.InnerText.ToString().Replace('_', ' ');
                 locDDList.Items.Add(i);
             }
         }

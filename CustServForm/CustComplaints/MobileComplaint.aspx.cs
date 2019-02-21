@@ -32,7 +32,7 @@ namespace CustServForm
                 foreach (XmlNode n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name;
+                    i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
             }
@@ -40,7 +40,7 @@ namespace CustServForm
             foreach(XmlNode n in node)
             {
                 ListItem i = new ListItem();
-                i.Text = n.InnerText.ToString();
+                i.Text = n.InnerText.ToString().Replace('_', ' ');
                 locDDList.Items.Add(i);
             }
 

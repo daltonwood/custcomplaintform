@@ -26,7 +26,7 @@ namespace CustServForm.CustComplaints
                 foreach (XmlNode n in node)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name;
+                    i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
             }
@@ -44,7 +44,7 @@ namespace CustServForm.CustComplaints
                 foreach (XmlNode n in node)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name;
+                    i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
 
@@ -65,7 +65,7 @@ namespace CustServForm.CustComplaints
                 foreach (XmlNode n in node)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name;
+                    i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
 
@@ -86,7 +86,7 @@ namespace CustServForm.CustComplaints
                 foreach (XmlNode n in node)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name;
+                    i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
                 DispLabel.Visible = true;
@@ -106,7 +106,7 @@ namespace CustServForm.CustComplaints
                 foreach (XmlNode n in node)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name;
+                    i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
 
@@ -127,7 +127,7 @@ namespace CustServForm.CustComplaints
                     foreach (XmlNode n in node)
                     {
                         ListItem i = new ListItem();
-                        i.Text = n.Name;
+                        i.Text = n.Name.Replace('_', ' ');
                         dispList.Items.Add(i);
                     }
 
@@ -176,13 +176,21 @@ namespace CustServForm.CustComplaints
         {
             XmlDocument dispDoc = new XmlDocument();
             var path = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
-            if (Disp_Radio.SelectedItem.Value == "1")
+            if (Disp_Radio.SelectedItem.Value == "2")
             {
-                path = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+                path = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
             }
-            else if(Disp_Radio.SelectedItem.Value == "2")
+            else if (Disp_Radio.SelectedItem.Value == "3")
             {
                 path = Server.MapPath(@"~/CustComplaints/KioskGateDispIssues.xml");
+            }
+            else if (Disp_Radio.SelectedItem.Value == "4")
+            {
+                path = Server.MapPath(@"~/CustComplaints/POSDispIssues.xml");
+            }
+            else if (Disp_Radio.SelectedItem.Value == "5")
+            {
+                path = Server.MapPath(@"~/CustComplaints/ValetDispIssues.xml");
             }
             dispDoc.Load(path);
             string val = dispList.Text;
@@ -193,20 +201,29 @@ namespace CustServForm.CustComplaints
             root.AppendChild(elem);
             dispDoc.Save(@path);
         }
+        //Add new Disposition Category to XML sheet
         private void updateDisp()
         {
             XmlDocument dispDoc = new XmlDocument();
             var path = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
-            if (Disp_Radio.SelectedItem.Value == "1")
+            if (Disp_Radio.SelectedItem.Value == "2")
             {
-                path = Server.MapPath(@"~/CustComplaints/WebMobDispIssues.xml");
+                path = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
             }
-            else if (Disp_Radio.SelectedItem.Value == "2")
+            else if (Disp_Radio.SelectedItem.Value == "3")
             {
                 path = Server.MapPath(@"~/CustComplaints/KioskGateDispIssues.xml");
             }
+            else if (Disp_Radio.SelectedItem.Value == "4")
+            {
+                path = Server.MapPath(@"~/CustComplaints/POSDispIssues.xml");
+            }
+            else if (Disp_Radio.SelectedItem.Value == "5")
+            {
+                path = Server.MapPath(@"~/CustComplaints/ValetDispIssues.xml");
+            }
             dispDoc.Load(path);
-            string val = newDisp.Text;
+            string val = newDisp.Text.Replace(' ', '_');
             XmlNode root = dispDoc.DocumentElement;
             XmlElement elem = dispDoc.CreateElement(val);
             root.InsertAfter(elem, root.LastChild);

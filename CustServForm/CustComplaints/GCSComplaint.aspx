@@ -7,8 +7,10 @@
 <!-- Navbar -->
 <ul>
     <li><a href="WebComplaint.aspx">Website</a></li>
-    <li><a href="MobileComplaint.aspx">Mobile</a></li>
-    <li><a class="active" href="#!">GCS/Kiosk</a></li>
+    <li><a href="AppComplaint.aspx">App</a></li>
+    <li><a class="active" href="#">Gate/Kiosk</a></li>
+    <li><a href="POSComplaint.aspx">POS</a></li>
+    <li><a href="Valet.aspx">Valet App</a></li>
     <li style="float: right"><a href="EditForm.aspx">Edit Form</a></li>
 </ul>
 <!-- Main form content -->
