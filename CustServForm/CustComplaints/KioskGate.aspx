@@ -108,7 +108,7 @@
 </asp:Table>
     <textarea style="width:1200px; height:200px; padding-left:15px"></textarea>
     <br />
-    <button id="mSubmitForm" onclick="submitForm">Submit</button>
+    <button runat="server" id="mSubmitForm" onserverclick="submitForm">Submit</button>
 </div>
 </ContentTemplate>
 </asp:UpdatePanel>

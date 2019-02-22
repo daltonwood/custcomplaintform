@@ -15,7 +15,7 @@ namespace CustServForm.CustComplaints
     {
         public static void PostToSamanage()
         {
-            var requestUri = "https://api.samanage.com";
+            var requestUri = "https://api.samanage.com/incidents";
             string accessToken = "amxlZUBwbmYuY29t:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyNTMxMjU0LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAyLTIyIDE1OjQzOjM0In0.jyRTSzj5OoyT9BkMK4L2SpgUUqxwz-_91gXmbeuxfHuw4mt4MhdIatrdLYnpKnIiQyY_oszjREHmuQww71zWEQ";
 
             var client = new HttpClient();
@@ -25,7 +25,8 @@ namespace CustServForm.CustComplaints
             client.DefaultRequestHeaders.Add("authorization", "Bearer " + accessToken);
 
             string json = String.Empty;
-            using (StreamReader r = new StreamReader("~/CustComplaints/IncidentForm.json"))
+            //var path = HttpContext.Server.MapPath(@"~/CustComplaints/IncidentForm.json");
+            using (StreamReader r = new StreamReader(@"C:\Users\dcook\source\repos\dcook63\custcomplaintform\CustServForm\CustComplaints\IncidentForm.json"))
             {
                 json = r.ReadToEnd();
             }
