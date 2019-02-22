@@ -58,6 +58,22 @@
             <asp:TextBox runat="server"  Visible="false" ID="dispIssueText" placeholder="Add Issue"></asp:TextBox>
         </asp:TableCell>
      </asp:TableRow>
+
+    <asp:TableRow>
+        <asp:TableCell>
+            <asp:Label runat="server">Add New Origin of Complaint</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell Width="15px"></asp:TableCell>
+        <asp:TableCell style="vertical-align:bottom">
+            <asp:TextBox runat="server" visible="false" id="originText"></asp:TextBox>
+        </asp:TableCell>
+        <asp:TableCell Width="15px"></asp:TableCell>
+        <asp:TableCell style="vertical-align:bottom">
+            <asp:TextBox runat="server" visible="false" id="originPHText" placeholder="Add Hint Here..."></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+
+    <asp:TableRow Height="15px"></asp:TableRow>
     <asp:TableRow>
         <asp:TableCell>
             <asp:Button runat="server" ID="submitBtn" OnClick="submitData" Text="Add All Data"/>
