@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 using System.Xml;
 
 namespace CustServForm.CustComplaints
@@ -139,7 +140,21 @@ namespace CustServForm.CustComplaints
                 }
         }
 
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
 
+            var error = exc.ToString().Substring(0, 54);
+
+            // Handle specific exception.
+            if (error.Equals("System.Web.HttpRequestValidationException (0x80004005)"))
+            {
+                MessageBox.Show("Please refrain from using the < character.", "Error: Invalid Input",
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            // Clear the error from the server.
+            // Server.ClearError();
+        }
 
         public void submitData(object sender, EventArgs e)
         {
