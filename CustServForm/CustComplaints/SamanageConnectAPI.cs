@@ -8,46 +8,47 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using System.Windows;
 using System.IO;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace CustServForm.CustComplaints
 {
     public class SamanageConnectAPI
     {
-        public static void PostToSamanage()
+        public static string PostToSamanage()
         {
-            var requestUri = "https://api.samanage.com/incidents";
             string accessToken = "amxlZUBwbmYuY29t:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyNTMxMjU0LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAyLTIyIDE1OjQzOjM0In0.jyRTSzj5OoyT9BkMK4L2SpgUUqxwz-_91gXmbeuxfHuw4mt4MhdIatrdLYnpKnIiQyY_oszjREHmuQww71zWEQ";
-
+            var requestUri = "https://api.samanage.com/incidents.xml";
             var client = new HttpClient();
+
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new
-                System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("authorization", "Bearer " + accessToken);
-
-            string json = String.Empty;
-            //var path = HttpContext.Server.MapPath(@"~/CustComplaints/IncidentForm.json");
-            using (StreamReader r = new StreamReader(@"C:\Users\dcook\source\repos\dcook63\custcomplaintform\CustServForm\CustComplaints\IncidentForm.json"))
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.samanage.v2.1+xml"));
+            client.DefaultRequestHeaders.Add("X-Samanage-Authorization", "Bearer " + accessToken);
+            var body = new
             {
-                json = r.ReadToEnd();
-            }
+                name = "test",
+                priority = "low",
+                category = new[]
+                                {
+                                    new
+                                    {
+                                        name = "Marketing"
+                                    }
+                                },
 
-            try
-            {
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = client.PostAsync(requestUri, content).GetAwaiter().GetResult();
-                if (response.StatusCode != HttpStatusCode.Accepted)
-                {
-                    var result = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var jobject = JObject.Parse(result);
-                    throw new Exception(jobject.ToString());
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "Error",
-                MessageBoxButton.OK, MessageBoxImage.Error);
+                requester = new[] {
+                    new { email = "dcook@pnf.com" }},
 
+                due_at = "Dec 11,2022",
+                description = "test",
+            };
+            var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            var response = client.PostAsync(requestUri, content).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             }
+            return null;
         }
     }
 }
