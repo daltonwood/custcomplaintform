@@ -105,9 +105,14 @@
             <asp:Label runat="server">Comments</asp:Label>
         </asp:TableCell>
     </asp:TableRow>
+
+    <asp:TableRow>
+        <asp:TableCell>
+            <asp:TextBox style="text-align: left; vertical-align: top" runat="server" id="commentBox" ColumnSpan="3" Height="400px" Width="500px"></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+    <asp:TableRow Height="15px"></asp:TableRow>
 </asp:Table>
-    <textarea style="width:1200px; height:200px; padding-left:15px"></textarea>
-    <br />
     <button runat="server" type="button" id="mSubmitForm" onserverclick="submitForm">Submit</button>
 </div>
 </ContentTemplate>

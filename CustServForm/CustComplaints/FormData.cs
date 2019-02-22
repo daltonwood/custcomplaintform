@@ -21,7 +21,33 @@ namespace CustServForm.CustComplaints
             }
         }
 
-            private string _DispositionType;
+        private int _Membership;
+        public int Membership
+        {
+            get
+            {
+                return _Membership;
+            }
+            set
+            {
+                _Membership = value;
+            }
+        }
+
+        private string _Date;
+        public int Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                _Date = value;
+            }
+        }
+
+        private string _DispositionType;
             public string DispositionType
         {
             get
@@ -45,6 +71,22 @@ namespace CustServForm.CustComplaints
             {
                 _DispositionIssue = value;
             }
+        }
+        public string FormatJSON()
+        {
+            return null;
+        }
+
+        public void Fill(string loc, int member, string date, string origin, string originComment, string disp, string dispIssue, string comments)
+        {
+            _Location = loc;
+            _Membership = member;
+            _Date = date;
+            _Origin = origin;
+            _OriginComment = originComment;
+            _DispositionType = disp;
+            _DispositionIssue = dispIssue;
+            _Comments = comments;
         }
     }
 }

@@ -38,8 +38,6 @@ namespace CustServForm.CustComplaints
 
                 requester = new[] {
                     new { email = "dcook@pnf.com" }},
-
-                due_at = "Dec 11,2022",
                 description = "test",
             };
             var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");

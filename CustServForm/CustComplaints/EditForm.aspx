@@ -65,7 +65,7 @@
     <%-- New Origin of Complaint Menu --%>
     <asp:TableRow>
         <asp:TableCell>
-            <asp:Label runat="server">Add New Origin of Complaint</asp:Label>
+            <asp:Label runat="server" Visible="false">Add New Origin of Complaint</asp:Label>
         </asp:TableCell>
         <asp:TableCell Width="15px"></asp:TableCell>
         <asp:TableCell style="vertical-align:bottom">
