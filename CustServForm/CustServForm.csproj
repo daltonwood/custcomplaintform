@@ -143,6 +143,7 @@
     <Content Include="CustComplaints\xml\Locations.xml" />
     <Content Include="CustComplaints\MobileComplaint.aspx" />
     <Content Include="CustComplaints\POSComplaint.aspx" />
+    <Content Include="CustComplaints\xml\OriginOfComplaint.xml" />
     <Content Include="CustComplaints\xml\POSDispIssues.xml" />
     <Content Include="CustComplaints\styles.css" />
     <Content Include="CustComplaints\Valet.aspx" />

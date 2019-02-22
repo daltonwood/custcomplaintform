@@ -9,10 +9,10 @@
   </Discounts>
   <Rates>
   </Rates>
-  <PostReservation>
-  </PostReservation>
-  <EaseOfUse>
-  </EaseOfUse>
+  <Post_Reservation>
+  </Post_Reservation>
+  <Ease_Of_Use>
+  </Ease_Of_Use>
   <Phones>
     <issue>Breaking</issue>
     <issue>Phone Destroyed</issue>
