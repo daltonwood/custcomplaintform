@@ -15,7 +15,7 @@ namespace CustServForm.CustComplaints
 {
     public class SamanageConnectAPI
     {
-        public static string PostToSamanage()
+        public static string PostToSamanage(dynamic postBody)
         {
             string accessToken = "amxlZUBwbmYuY29t:eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyNTMxMjU0LCJnZW5lcmF0ZWRfYXQiOiIyMDE5LTAyLTIyIDE1OjQzOjM0In0.jyRTSzj5OoyT9BkMK4L2SpgUUqxwz-_91gXmbeuxfHuw4mt4MhdIatrdLYnpKnIiQyY_oszjREHmuQww71zWEQ";
             var requestUri = "https://api.samanage.com/incidents.xml";
@@ -24,22 +24,8 @@ namespace CustServForm.CustComplaints
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.samanage.v2.1+xml"));
             client.DefaultRequestHeaders.Add("X-Samanage-Authorization", "Bearer " + accessToken);
-            var body = new
-            {
-                name = "test",
-                priority = "low",
-                category = new[]
-                                {
-                                    new
-                                    {
-                                        name = "Marketing"
-                                    }
-                                },
-
-                requester = new[] {
-                    new { email = "dcook@pnf.com" }},
-                description = "test",
-            };
+            var body = postBody;
+            MessageBox.Show((JsonConvert.SerializeObject(body)));
             var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
             var response = client.PostAsync(requestUri, content).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)

@@ -47,6 +47,32 @@ namespace CustServForm.CustComplaints
             }
         }
 
+        private string _Origin;
+        public string Origin
+        {
+            get
+            {
+                return _Origin;
+            }
+            set
+            {
+                _Origin = value;
+            }
+        }
+
+        private string _OriginComment;
+        public string OriginComment
+        {
+            get
+            {
+                return _OriginComment;
+            }
+            set
+            {
+                _OriginComment = value;
+            }
+        }
+
         private string _DispositionType;
             public string DispositionType
         {
@@ -72,9 +98,43 @@ namespace CustServForm.CustComplaints
                 _DispositionIssue = value;
             }
         }
-        public string FormatJSON()
+
+        private string _Comments;
+        public string Comments
         {
-            return null;
+            get
+            {
+                return _Comments;
+            }
+            set
+            {
+                _Comments = value;
+            }
+        }
+
+        public dynamic FormatJSON()
+        {
+
+            string vals = ("{\"name\":\"Customer Complaint\",\"priority\":\"High\"");
+
+            var body = new
+            {
+                name = "Customer Complaint",
+                priority = "High",
+                description = "Results from a customer complaint form",
+                custom_fields_value = new {
+                    name = "Membership",
+                    value = "True"
+                },
+                custom_fields_values =new[]
+                    { new
+                        {
+                            name = "Membership",
+                            value = "True"
+                        }
+                    },
+            };
+            return body;
         }
 
         public void Fill(string loc, int member, string date, string origin, string originComment, string disp, string dispIssue, string comments)
