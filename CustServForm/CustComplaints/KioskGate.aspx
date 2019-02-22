@@ -25,11 +25,12 @@
             <asp:Label runat="server">Facility/Location</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:dropdownlist runat="server" ID="locDDList" Width="170px" Height="25px"></asp:dropdownlist>
+        <asp:dropdownlist runat="server" ID="locDDList" width="175px" Height="25px"></asp:dropdownlist>
         </asp:TableCell>
     </asp:TableRow>
 
     <%-- Customer Membership Menu --%>
+    <asp:TableRow Height="15px"></asp:TableRow>
     <asp:TableRow>
         <asp:TableCell>
             <asp:Label runat="server">Is the Customer a member?</asp:Label>
@@ -59,9 +60,9 @@
             <asp:Label runat="server">Actual Incident Date</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:TextBox runat="server" ID="gcsDateTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" width="175px" ID="gcsDateTextBox"></asp:TextBox>
         </asp:TableCell>
-        <asp:TableCell>
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:ImageButton runat="server" src="calendarico.png" Width="25px" OnClick="showCal" AutoPostBack="true"/>
             <asp:Calendar runat="server" style="z-index: 100; position:absolute" BackColor="White" Visible="false" ID="calendar" AutoPostBack="true" OnSelectionChanged="dateChanged"></asp:Calendar>
         </asp:TableCell>
@@ -73,14 +74,14 @@
             <asp:Label runat="server">Origin of Complaint</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:dropdownlist runat="server" ID="originList" Width="174px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
+            <asp:dropdownlist runat="server" ID="originList" width="175px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
                 <asp:listitem text="Listen 360" value="listen"></asp:listitem>
                 <asp:listitem text="Email" value="email"></asp:listitem>
                 <asp:listitem text="Social Media" value="smedia"></asp:listitem>
                 <asp:ListItem Text="Phone" Value="phone"></asp:ListItem>
             </asp:dropdownlist>
         </asp:TableCell>
-        <asp:TableCell Width="1000px">
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:TextBox runat="server" width="500px" AutoPostBack="true" Placeholder="Paste Listen 360 comment here." Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
@@ -91,9 +92,9 @@
             <asp:Label runat="server">Disposition</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:DropDownList runat="server" AutoPostBack="true" Width="174px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged"></asp:DropDownList>
+            <asp:DropDownList runat="server" AutoPostBack="true" width="175px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged"></asp:DropDownList>
         </asp:TableCell>
-        <asp:TableCell>
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:DropDownList runat="server" AutoPostBack="true" Width="150px" Height="25px" ID="dispDetails">
             </asp:DropDownList>
         </asp:TableCell>

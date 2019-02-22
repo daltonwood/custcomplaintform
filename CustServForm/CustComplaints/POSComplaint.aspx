@@ -67,20 +67,20 @@
         </asp:TableCell>
     </asp:TableRow>
 
-    <%-- Origin of Complaint Menu --%>
+   <%-- Origin of Complaint Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent" Width="500px">
         <asp:TableCell>
             <asp:Label runat="server">Origin of Complaint</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:dropdownlist runat="server" ID="originList" Width="174px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
+            <asp:dropdownlist runat="server" ID="originList" width="175px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
                 <asp:listitem text="Listen 360" value="listen"></asp:listitem>
                 <asp:listitem text="Email" value="email"></asp:listitem>
                 <asp:listitem text="Social Media" value="smedia"></asp:listitem>
                 <asp:ListItem Text="Phone" Value="phone"></asp:ListItem>
             </asp:dropdownlist>
         </asp:TableCell>
-        <asp:TableCell Width="1000px">
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:TextBox runat="server" width="500px" AutoPostBack="true" Placeholder="Paste Listen 360 comment here." Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
@@ -91,9 +91,9 @@
             <asp:Label runat="server">Disposition</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:DropDownList runat="server" AutoPostBack="true" Width="174px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged"></asp:DropDownList>
+            <asp:DropDownList runat="server" AutoPostBack="true" width="175px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged"></asp:DropDownList>
         </asp:TableCell>
-        <asp:TableCell>
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:DropDownList runat="server" AutoPostBack="true" Width="150px" Height="25px" ID="dispDetails">
             </asp:DropDownList>
         </asp:TableCell>
@@ -105,8 +105,13 @@
             <asp:Label runat="server">Comments</asp:Label>
         </asp:TableCell>
     </asp:TableRow>
-</asp:Table>
-    <textarea style="width:1200px; height:200px; padding-left:15px"></textarea>
+
+    <asp:TableRow>
+        <asp:TableCell>
+            <asp:TextBox style="text-align: left; vertical-align: top" runat="server" id="TextBox1" ColumnSpan="3" Height="400px" Width="500px"></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+    <asp:TableRow Height="15px"></asp:TableRow></asp:Table>
     <br />
     <button id="mSubmitForm" onclick="submitForm">Submit</button>
 </div>

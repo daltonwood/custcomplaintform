@@ -35,7 +35,7 @@ namespace CustServForm.CustComplaints
         }
 
         private string _Date;
-        public int Date
+        public string Date
         {
             get
             {
@@ -82,11 +82,11 @@ namespace CustServForm.CustComplaints
             _Location = loc;
             _Membership = member;
             _Date = date;
-            _Origin = origin;
-            _OriginComment = originComment;
+           // _Origin = origin;
+          //  _OriginComment = originComment;
             _DispositionType = disp;
             _DispositionIssue = dispIssue;
-            _Comments = comments;
+           // _Comments = comments;
         }
     }
 }

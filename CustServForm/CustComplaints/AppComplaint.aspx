@@ -18,58 +18,57 @@
 <asp:UpdatePanel runat="server" ID="mobilePanel" UpdateMode="Conditional">
 <ContentTemplate>
 <div class="main-content">
-<asp:Table runat="server">
+<asp:Table runat="server" >
 
-    <%-- Location Menu --%>
+<%-- Location Menu --%>
     <asp:TableRow>
         <asp:TableCell Width="40px">
             <asp:Label runat="server">Facility/Location</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:dropdownlist runat="server" ID="locDDList" Width="170px" Height="25px">
-        </asp:dropdownlist>
+        <asp:dropdownlist runat="server" ID="locDDList" width="175px" Height="25px"></asp:dropdownlist>
         </asp:TableCell>
     </asp:TableRow>
-    
+
     <%-- Customer Membership Menu --%>
     <asp:TableRow Height="15px"></asp:TableRow>
     <asp:TableRow>
-        <asp:TableCell HorizontalAlign="Left">
-            <asp:Label runat="server">Is the Customer a member?</asp:Label>
+        <asp:TableCell>
+            <asp:Label runat="server" st>Is the Customer a member?</asp:Label>
         </asp:TableCell>
-        <asp:TableCell HorizontalAlign="Left">
+        <asp:TableCell>
             <asp:RadioButtonList runat="server" OnSelectedIndexChanged="fp_selectedIndexChanged"  AutoPostBack="true" ID="FP_Radio">
                 <asp:ListItem Value="1">Yes</asp:ListItem>
                 <asp:ListItem Value="2">No</asp:ListItem>
             </asp:RadioButtonList>
         </asp:TableCell>
-        <asp:TableCell width="174px" HorizontalAlign="Left">
-            <asp:DropDownList runat="server" Visible="false" ID="FPTier" Width="100px">
+        <asp:TableCell>
+            <asp:DropDownList runat="server" Visible="false" ID="FPTier">
                 <asp:ListItem Value="Member">Member</asp:ListItem>
                 <asp:ListItem Value="Silver">Silver</asp:ListItem>
                 <asp:ListItem Value="Gold">Gold</asp:ListItem>
                 <asp:ListItem Value="Platinum">Platinum</asp:ListItem>
             </asp:DropDownList>
         </asp:TableCell>
-        <asp:TableCell HorizontalAlign="Left">
+        <asp:TableCell>
             <asp:TextBox runat="server" Visible="false" ID="FPIDTxtBox" Placeholder="Paste FP Number here."></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
     <%-- Actual Incident Date Menu --%>
-    <asp:TableRow Height="15px"></asp:TableRow>
-    <asp:TableRow BorderColor="Transparent">
-        <asp:TableCell HorizontalAlign="Left">
+    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+        <asp:TableCell>
             <asp:Label runat="server">Actual Incident Date</asp:Label>
         </asp:TableCell>
-        <asp:TableCell HorizontalAlign="Left">
-            <asp:TextBox runat="server" ID="dateTextBox"></asp:TextBox>
+        <asp:TableCell>
+            <asp:TextBox runat="server" width="175px" ID="gcsDateTextBox"></asp:TextBox>
         </asp:TableCell>
-        <asp:TableCell HorizontalAlign="Left" Width="100px">
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:ImageButton runat="server" src="calendarico.png" Width="25px" OnClick="showCal" AutoPostBack="true"/>
             <asp:Calendar runat="server" style="z-index: 100; position:absolute" BackColor="White" Visible="false" ID="calendar" AutoPostBack="true" OnSelectionChanged="dateChanged"></asp:Calendar>
         </asp:TableCell>
     </asp:TableRow>
+
 
     <%-- Mobile Operating System Menu --%>
     <asp:TableRow Height="15px"></asp:TableRow>
@@ -82,44 +81,52 @@
         </asp:TableCell>
     </asp:TableRow>
 
-    <%-- Origin of Complaint Menu --%>
-    <asp:TableRow Height="15px"></asp:TableRow>
-    <asp:TableRow Width="500px">
-        <asp:TableCell HorizontalAlign="Left">
+   <%-- Origin of Complaint Menu --%>
+    <asp:TableRow BorderWidth="10px" BorderColor="Transparent" Width="500px">
+        <asp:TableCell>
             <asp:Label runat="server">Origin of Complaint</asp:Label>
         </asp:TableCell>
-        <asp:TableCell HorizontalAlign="Left">
-            <asp:dropdownlist runat="server" ID="originList" Width="174px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true"></asp:dropdownlist>
+        <asp:TableCell>
+            <asp:dropdownlist runat="server" ID="originList" width="175px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
+                <asp:listitem text="Listen 360" value="listen"></asp:listitem>
+                <asp:listitem text="Email" value="email"></asp:listitem>
+                <asp:listitem text="Social Media" value="smedia"></asp:listitem>
+                <asp:ListItem Text="Phone" Value="phone"></asp:ListItem>
+            </asp:dropdownlist>
         </asp:TableCell>
-        <asp:TableCell Width="100%" ColumnSpan="2" HorizontalAlign="Left">
-            <asp:TextBox runat="server" width="500px" AutoPostBack="true" Visible="true" ID="originTxtBox"></asp:TextBox>
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
+            <asp:TextBox runat="server" width="500px" AutoPostBack="true" Placeholder="Paste Listen 360 comment here." Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
     <%-- Disposition Menu --%>
-    <asp:TableRow Height="15px"></asp:TableRow>
-    <asp:TableRow>
-        <asp:TableCell HorizontalAlign="Left">
+    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+        <asp:TableCell>
             <asp:Label runat="server">Disposition</asp:Label>
         </asp:TableCell>
-        <asp:TableCell HorizontalAlign="Left">
-            <asp:DropDownList runat="server" AutoPostBack="true" Width="174px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged"></asp:DropDownList>
+        <asp:TableCell>
+            <asp:DropDownList runat="server" AutoPostBack="true" width="175px" Height="25px" ID="dispList" OnSelectedIndexChanged="dispListChanged"></asp:DropDownList>
         </asp:TableCell>
-        <asp:TableCell HorizontalAlign="Left" Width="100px">
+        <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:DropDownList runat="server" AutoPostBack="true" Width="150px" Height="25px" ID="dispDetails">
             </asp:DropDownList>
         </asp:TableCell>
     </asp:TableRow>
 
     <%-- Comments Menu --%>
-    <asp:TableRow Height="15px"></asp:TableRow>
-    <asp:TableRow BorderColor="Transparent">
-        <asp:TableCell HorizontalAlign="Left">
+    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+        <asp:TableCell>
             <asp:Label runat="server">Comments</asp:Label>
         </asp:TableCell>
     </asp:TableRow>
+
+    <asp:TableRow>
+        <asp:TableCell>
+            <asp:TextBox style="text-align: left; vertical-align: top" runat="server" id="TextBox1" ColumnSpan="3" Height="400px" Width="500px"></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+    <asp:TableRow Height="15px"></asp:TableRow>
 </asp:Table>
-<textarea style="width:1200px; height:200px; padding-left:15px"></textarea>
 <br />
 <button id="mSubmitForm" onclick="submitForm">Submit</button>
 </div>
