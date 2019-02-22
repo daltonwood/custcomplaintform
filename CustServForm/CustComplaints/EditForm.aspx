@@ -26,7 +26,8 @@
         </asp:TableCell>
     </asp:TableRow>
 
-       <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+    <%-- Form To Edit Menu --%>
+    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:RadioButtonList runat="server" OnSelectedIndexChanged="disp_selectedIndexChanged"  AutoPostBack="true" ID="Disp_Radio">
                 <asp:ListItem Value="1">Website</asp:ListItem>
@@ -36,8 +37,9 @@
                 <asp:ListItem Value="5">Valet</asp:ListItem>
             </asp:RadioButtonList>        
         </asp:TableCell>
-     </asp:TableRow>
+    </asp:TableRow>
 
+    <%-- Edit Disposition Categories Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server" Visible="false" ID="DispLabel">Add New Disposition</asp:Label>
@@ -47,6 +49,7 @@
         </asp:TableCell>
      </asp:TableRow>
 
+    <%-- Edit Disposition Issues Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server" Visible="false" ID="DispLabel2">Disposition</asp:Label>
@@ -59,6 +62,7 @@
         </asp:TableCell>
      </asp:TableRow>
 
+    <%-- New Origin of Complaint Menu --%>
     <asp:TableRow>
         <asp:TableCell>
             <asp:Label runat="server">Add New Origin of Complaint</asp:Label>
