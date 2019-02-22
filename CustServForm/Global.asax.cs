@@ -17,5 +17,18 @@ namespace CustServForm
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+
+            int excep = exc.GetHashCode();
+
+            if (exc.ErrorCode() == 13)
+            {
+                // Pass the error on to the error page.
+                Server.Transfer("ErrorPage.aspx?handler=Application_Error%20-%20Global.asax", true);
+            }
+        }
     }
 }

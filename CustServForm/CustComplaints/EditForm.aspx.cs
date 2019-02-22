@@ -139,8 +139,31 @@ namespace CustServForm.CustComplaints
                 }
         }
 
+
+
         public void submitData(object sender, EventArgs e)
         {
+            //Error handling
+            var location = locText.Text;
+            var newDisposition = newDisp.Text;
+            var dispositionText = dispIssueText.Text;
+            Exception ex = Server.GetLastError();
+            //Check Location for < > " or ' 
+           if (ex.Equals(null) && location.Contains("<"))
+            {
+                ex = new Exception("Invalid Input for Location. Please refrain from using <, >, ', or \".");
+            }
+            //Check newDisposition for < > " or ' 
+            if (newDisposition.Contains("<"))
+            {
+                ex = new Exception("Invalid Input for New Disposition Type. Please refrain from using <, >, ', or \".");
+            }
+            //Check dispositionText for < > " or ' 
+            if (dispositionText.Contains("<"))
+            {
+                ex = new Exception("Invalid Input for New Issue. Please refrain from using <, >, ', or \".");
+            }
+
             //Check if location textbox has data
             if (locText.Text.Length != 0)
             {
