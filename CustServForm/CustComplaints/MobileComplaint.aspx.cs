@@ -14,7 +14,7 @@ namespace CustServForm
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
+            var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
             XmlDocument locDoc = new XmlDocument();
             locDoc.Load(path);
             locDDList.Items.Clear();
@@ -25,7 +25,7 @@ namespace CustServForm
                 calendar.Visible = false;
 
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/DispIssues.xml");
+                var dispPath = Server.MapPath(@"~/CustComplaints/xml/DispIssues.xml");
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
                 XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;

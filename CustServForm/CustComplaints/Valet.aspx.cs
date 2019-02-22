@@ -13,7 +13,7 @@ namespace CustServForm.CustComplaints
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
+            var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
             XmlDocument locDoc = new XmlDocument();
             locDoc.Load(path);
             locDDList.Items.Clear();
@@ -24,7 +24,7 @@ namespace CustServForm.CustComplaints
                 calendar.Visible = false;
 
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/ValetDispIssues.xml");
+                var dispPath = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
                 XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
@@ -49,7 +49,7 @@ namespace CustServForm.CustComplaints
         {
             XmlDocument dispDoc = new XmlDocument();
             dispDetails.Items.Clear();
-            var dispPath = Server.MapPath(@"~/CustComplaints/ValetDispIssues.xml");
+            var dispPath = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
             dispDoc.Load(dispPath);
             XmlNodeList dispNode = dispDoc.GetElementsByTagName(dispList.SelectedItem.Value);
             dispDetails.Items.Clear();

@@ -12,7 +12,7 @@ namespace CustServForm.CustComplaints
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
+            var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
             XmlDocument locDoc = new XmlDocument();
             locDoc.Load(path);
             locDDList.Items.Clear();

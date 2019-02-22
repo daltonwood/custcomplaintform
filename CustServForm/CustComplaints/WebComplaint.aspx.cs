@@ -16,7 +16,7 @@ namespace CustServForm
 
             if (!IsPostBack)
             {
-                var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
+                var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
                 XmlDocument locDoc = new XmlDocument();
                 locDoc.Load(path);
                 locDDList.Items.Clear();
@@ -70,7 +70,7 @@ namespace CustServForm
         {
             XmlDocument dispDoc = new XmlDocument();
             dispDetails.Items.Clear();
-            var dispPath = Server.MapPath(@"~/CustComplaints/WebDispIssues.xml");
+            var dispPath = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
             dispDoc.Load(dispPath);
             XmlNodeList dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
             dispDetails.Items.Clear();
@@ -114,7 +114,7 @@ namespace CustServForm
         public void submitForm(object sender, EventArgs e)
         {
             XmlDocument samangeForm = new XmlDocument();
-            var formPath = Server.MapPath(@"~/CustComplaints/IncidentForm.xml");
+            var formPath = Server.MapPath(@"~/CustComplaints/xml/IncidentForm.xml");
             samangeForm.Load(formPath);
         }
     }

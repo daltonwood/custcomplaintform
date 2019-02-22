@@ -5,6 +5,7 @@
     <issue>Can't edit profile</issue>
   </Accounts>
   <Discounts>
+    <issue>Does not appear</issue>
   </Discounts>
   <Rates>
   </Rates>
@@ -13,6 +14,7 @@
   <EaseOfUse>
   </EaseOfUse>
   <Phones>
-    <issue>Breakin</issue>
+    <issue>Breaking</issue>
+    <issue>Phone Destroyed</issue>
   </Phones>
 </root>

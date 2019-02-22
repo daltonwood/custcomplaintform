@@ -14,7 +14,7 @@ namespace CustServForm
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            var path = Server.MapPath(@"~/CustComplaints/Locations.xml");
+            var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
             XmlDocument locDoc = new XmlDocument();
             locDoc.Load(path);
             locDDList.Items.Clear();
@@ -26,7 +26,7 @@ namespace CustServForm
 
                 //Load Disposition Categories into Drop Down Menu
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
+                var dispPath = Server.MapPath(@"~/CustComplaints/xml/AppDispIssues.xml");
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
                 XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
@@ -83,7 +83,7 @@ namespace CustServForm
         public void dispListChanged(object sender, EventArgs e)
         {
             XmlDocument dispDoc = new XmlDocument();
-            var dispPath = Server.MapPath(@"~/CustComplaints/AppDispIssues.xml");
+            var dispPath = Server.MapPath(@"~/CustComplaints/xml/AppDispIssues.xml");
             dispDoc.Load(dispPath);
             XmlNodeList dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
             dispDetails.Items.Clear();
