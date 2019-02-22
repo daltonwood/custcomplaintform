@@ -131,8 +131,9 @@ namespace CustServForm.CustComplaints
             else { calendar.Visible = false; }
         }
 
-        public void submitForm(object sender, EventArgs e) {
-
+        public void submitForm(object sender, EventArgs e)
+        {
+            SamanageConnectAPI.PostToSamanage();
         }
     }
 }
