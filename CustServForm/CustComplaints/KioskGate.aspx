@@ -18,6 +18,8 @@
 <ContentTemplate>
 <div class="main-content">
 <asp:Table runat="server">
+
+    <%-- Location Menu --%>
     <asp:TableRow>
         <asp:TableCell Width="40px">
             <asp:Label runat="server">Facility/Location</asp:Label>
@@ -27,6 +29,7 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Customer Membership Menu --%>
     <asp:TableRow>
         <asp:TableCell>
             <asp:Label runat="server">Is the Customer a member?</asp:Label>
@@ -49,9 +52,11 @@
             <asp:TextBox runat="server" Visible="false" ID="FPIDTxtBox" Placeholder="Paste FP Number here."></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
+
+    <%-- Actual Incident Date Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
-            <asp:Label runat="server">Date/Time of Incident</asp:Label>
+            <asp:Label runat="server">Actual Incident Date</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
             <asp:TextBox runat="server" ID="gcsDateTextBox"></asp:TextBox>
@@ -62,6 +67,7 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Origin of Complaint Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent" Width="500px">
         <asp:TableCell>
             <asp:Label runat="server">Origin of Complaint</asp:Label>
@@ -78,6 +84,8 @@
             <asp:TextBox runat="server" width="500px" AutoPostBack="true" Placeholder="Paste Listen 360 comment here." Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
+
+    <%-- Disposition Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Disposition</asp:Label>
@@ -90,6 +98,8 @@
             </asp:DropDownList>
         </asp:TableCell>
     </asp:TableRow>
+
+    <%-- Comments Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Comments</asp:Label>

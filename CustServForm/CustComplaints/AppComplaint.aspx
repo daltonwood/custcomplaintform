@@ -19,6 +19,7 @@
 <ContentTemplate>
 <div class="main-content">
 <asp:Table runat="server">
+
     <%-- Location Menu --%>
     <asp:TableRow>
         <asp:TableCell Width="40px">
@@ -55,7 +56,7 @@
         </asp:TableCell>
     </asp:TableRow>
 
-    <%-- Acutal Incident Date Menu --%>
+    <%-- Actual Incident Date Menu --%>
     <asp:TableRow Height="15px"></asp:TableRow>
     <asp:TableRow BorderColor="Transparent">
         <asp:TableCell HorizontalAlign="Left">

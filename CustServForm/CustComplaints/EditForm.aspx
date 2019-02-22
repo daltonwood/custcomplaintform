@@ -19,6 +19,7 @@
 <ContentTemplate>
 <div class="main-content">
 <asp:Table runat="server">
+    <%-- Add Location Menu --%>
     <asp:TableRow>
         <asp:TableCell>
             <asp:TextBox runat="server" placeholder="Add Location" ID="locText"></asp:TextBox>

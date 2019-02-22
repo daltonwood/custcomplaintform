@@ -18,6 +18,8 @@
 <ContentTemplate>
 <div class="main-content">
 <asp:Table runat="server">
+
+    <%-- Location Menu --%>
     <asp:TableRow>
         <asp:TableCell Width="40px">
             <asp:Label runat="server">Facility/Location</asp:Label>
@@ -27,6 +29,7 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Device Info Menu --%>
     <asp:TableRow>
         <asp:TableCell><asp:Label runat="server">Website accessed via:</asp:Label></asp:TableCell>
         <asp:TableCell>
@@ -37,6 +40,7 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Customer Membership Menu --%>
     <asp:TableRow>
         <asp:TableCell>
             <asp:Label runat="server">Is the Customer a member?</asp:Label>
@@ -60,9 +64,10 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Actual Incident Date Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
-            <asp:Label runat="server">Date/Time of Incident</asp:Label>
+            <asp:Label runat="server">Actual Incident Date</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
             <asp:TextBox runat="server" ID="dateTextBox"></asp:TextBox>
@@ -72,6 +77,8 @@
             <asp:Calendar runat="server" style="z-index: 100; position:absolute" BackColor="White" Visible="false" ID="calendar" AutoPostBack="true" OnSelectionChanged="dateChanged"></asp:Calendar>
         </asp:TableCell>
     </asp:TableRow>
+
+    <%-- Origin of Complaint Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent" Width="500px">
         <asp:TableCell>
             <asp:Label runat="server">Origin of Complaint</asp:Label>
@@ -88,6 +95,8 @@
             <asp:TextBox runat="server" width="1000px" AutoPostBack="true" Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
+
+    <%-- Disposition Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Disposition</asp:Label>
@@ -100,6 +109,8 @@
             </asp:DropDownList>
         </asp:TableCell>
     </asp:TableRow>
+
+    <%-- Comments Menu --%>
     <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Comments</asp:Label>
