@@ -114,20 +114,25 @@ namespace CustServForm.CustComplaints
 
         public dynamic FormatJSON()
         {
+
+            string vals = ("{\"name\":\"Customer Complaint\",\"priority\":\"High\"");
+
             var body = new
             {
                 name = "Customer Complaint",
-                priority = "INFORMATIONAL",
+                priority = "High",
                 description = "Results from a customer complaint form",
                 custom_fields_value = new {
                     name = "Membership",
                     value = "True"
                 },
-                custom_fields_values = new
-                {
-                    name = "Membership",
-                    value = "True"
-                },
+                custom_fields_values =new[]
+                    { new
+                        {
+                            name = "Membership",
+                            value = "True"
+                        }
+                    },
             };
             return body;
         }

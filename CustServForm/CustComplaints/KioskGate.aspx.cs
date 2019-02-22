@@ -135,8 +135,8 @@ namespace CustServForm.CustComplaints
         {
             FormData formData = new FormData();
             formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), gcsDateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text);
-
-            SamanageConnectAPI.PostToSamanage();
+            var body = formData.FormatJSON();
+            SamanageConnectAPI.PostToSamanage(body);
         }
     }
 }
