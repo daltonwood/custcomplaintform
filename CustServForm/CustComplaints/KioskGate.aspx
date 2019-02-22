@@ -67,7 +67,7 @@
             <asp:Label runat="server">Origin of Complaint</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:dropdownlist runat="server" ID="Mobilelist1" Width="174px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
+            <asp:dropdownlist runat="server" ID="originList" Width="174px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
                 <asp:listitem text="Listen 360" value="listen"></asp:listitem>
                 <asp:listitem text="Email" value="email"></asp:listitem>
                 <asp:listitem text="Social Media" value="smedia"></asp:listitem>

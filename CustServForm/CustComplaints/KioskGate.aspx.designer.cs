@@ -76,13 +76,13 @@ namespace CustServForm.CustComplaints {
         protected global::System.Web.UI.WebControls.Calendar calendar;
         
         /// <summary>
-        /// Mobilelist1 control.
+        /// originList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Mobilelist1;
+        protected global::System.Web.UI.WebControls.DropDownList originList;
         
         /// <summary>
         /// originTxtBox control.

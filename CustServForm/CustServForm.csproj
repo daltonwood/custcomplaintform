@@ -137,7 +137,6 @@
     <Content Include="CustComplaints\css\reset.css" />
     <Content Include="CustComplaints\css\styles.css" />
     <Content Include="CustComplaints\EditForm.aspx" />
-    <Content Include="CustComplaints\GCSComplaint.aspx" />
     <Content Include="CustComplaints\KioskGate.aspx" />
     <Content Include="CustComplaints\xml\KioskGateDispIssues.xml" />
     <Content Include="CustComplaints\xml\Locations.xml" />
@@ -215,13 +214,6 @@
       <DependentUpon>EditForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustComplaints\FormData.cs" />
-    <Compile Include="CustComplaints\GCSComplaint.aspx.cs">
-      <DependentUpon>GCSComplaint.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustComplaints\GCSComplaint.aspx.designer.cs">
-      <DependentUpon>GCSComplaint.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CustComplaints\KioskGate.aspx.cs">
       <DependentUpon>KioskGate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
