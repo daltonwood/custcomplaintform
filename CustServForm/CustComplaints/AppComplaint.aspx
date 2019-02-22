@@ -88,15 +88,10 @@
             <asp:Label runat="server">Origin of Complaint</asp:Label>
         </asp:TableCell>
         <asp:TableCell HorizontalAlign="Left">
-            <asp:dropdownlist runat="server" ID="Mobilelist1" Width="174px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true">
-                <asp:listitem text="Listen 360" value="listen"></asp:listitem>
-                <asp:listitem text="Email" value="email"></asp:listitem>
-                <asp:listitem text="Social Media" value="smedia"></asp:listitem>
-                <asp:ListItem Text="Phone" Value="phone"></asp:ListItem>
-            </asp:dropdownlist>
+            <asp:dropdownlist runat="server" ID="originList" Width="174px" Height="25px" OnSelectedIndexChanged="originChanged" AutoPostBack="true"></asp:dropdownlist>
         </asp:TableCell>
         <asp:TableCell Width="100%" ColumnSpan="2" HorizontalAlign="Left">
-            <asp:TextBox runat="server" width="500px" AutoPostBack="true" Placeholder="Paste Listen 360 comment here." Visible="true" ID="originTxtBox"></asp:TextBox>
+            <asp:TextBox runat="server" width="500px" AutoPostBack="true" Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 

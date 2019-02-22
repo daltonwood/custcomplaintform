@@ -20,12 +20,11 @@ namespace CustServForm
             locDDList.Items.Clear();
             if (!IsPostBack)
             {
-                dispDetails.Items.Add("Sign In");
-                dispDetails.Items.Add("Can't edit profile");
                 calendar.Visible = false;
 
+                //Load Disposition Categories into Drop Down Menu
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/DispIssues.xml");
+                var dispPath = Server.MapPath(@"~/CustComplaints/xml/AppDispIssues.xml");
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
                 XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
@@ -35,9 +34,40 @@ namespace CustServForm
                     i.Text = n.Name.Replace('_', ' ');
                     dispList.Items.Add(i);
                 }
+
+                //Load disposition issues into dropdown menu
+                dispDoc.Load(dispPath);
+                dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
+                dispDetails.Items.Clear();
+                foreach (XmlNode n in dispNode)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.InnerText.ToString();
+                    dispDetails.Items.Add(i);
+                }
+
+                //Load Origin of Complaint categories into Drop Down Menu
+                XmlDocument origDoc = new XmlDocument();
+                var origPath = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+                origDoc.Load(origPath);
+                originList.Items.Clear();
+                XmlNodeList origNode = origDoc.DocumentElement.ChildNodes;
+                foreach (XmlNode n in origNode)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Name.Replace('_', ' ');
+                    originList.Items.Add(i);
+                }
+
+                //Find xml node based on selected item of dropdown menu
+                string val = originList.SelectedItem.Text.Replace(' ', '_');
+                origDoc.Load(origPath);
+                XmlNode root = origDoc.DocumentElement;
+                originTxtBox.Attributes.Add("placeholder", root.SelectSingleNode(" / root / " + val).InnerXml.ToString());
             }
+            //Load Location XML list into Location Drop Down Menu
             XmlNodeList node = locDoc.SelectNodes("/root/location");
-            foreach(XmlNode n in node)
+            foreach (XmlNode n in node)
             {
                 ListItem i = new ListItem();
                 i.Text = n.InnerText.ToString().Replace('_', ' ');
@@ -51,22 +81,14 @@ namespace CustServForm
         }
         public void originChanged(object sender, EventArgs e)
         {
-            if (Mobilelist1.SelectedIndex == 0)
-            {
-                originTxtBox.Attributes.Add("Placeholder", "Paste Listen 360 comment here.");
-            }
-            if (Mobilelist1.SelectedIndex == 1)
-            {
-                originTxtBox.Attributes.Add("Placeholder", "Paste customer email here.");
-            }
-            if (Mobilelist1.SelectedIndex == 2)
-            {
-                originTxtBox.Attributes.Add("Placeholder", "Paste social media comment here.");
-            }
-            if (Mobilelist1.SelectedIndex == 3)
-            {
-                originTxtBox.Attributes.Add("Placeholder", "Enter any additional info here");
-            }
+            //Find xml node based on selected item of dropdown menu
+            XmlDocument origDoc = new XmlDocument();
+            var path = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+            string val = originList.SelectedItem.Text.Replace(' ', '_');
+            origDoc.Load(path);
+            XmlNode root = origDoc.DocumentElement;
+
+            originTxtBox.Attributes.Add("placeholder", root.SelectSingleNode(" / root / " + val).InnerXml.ToString());
         }
         public void dateChanged(object sender, EventArgs e)
         {
