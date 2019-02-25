@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 
 namespace CustServForm.CustComplaints
@@ -151,7 +152,7 @@ namespace CustServForm.CustComplaints
             return body;
         }
 
-        public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, string dispIssue, string comments)
+        public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket)
         {
             _Location = loc;
             _Membership = member;

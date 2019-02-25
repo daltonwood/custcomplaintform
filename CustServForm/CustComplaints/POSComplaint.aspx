@@ -45,7 +45,7 @@
             <asp:Label runat="server">Customer Email</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:TextBox runat="server" ID="CustEmail" width="175px" Height="25px" placeholder ="Place Customer Email Here."></asp:TextBox>
+        <asp:TextBox runat="server" ID="CustEmail" width="175px" Height="25px" placeholder ="Paste Customer Email"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 

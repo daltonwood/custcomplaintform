@@ -4,4 +4,7 @@
     <issue>App</issue>
     <issue>Physical Card</issue>
   </Scanning>
+  <Login>
+    <issue>Can't Log In</issue>
+  </Login>
 </root>
