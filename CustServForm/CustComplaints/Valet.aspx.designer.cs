@@ -31,6 +31,15 @@ namespace CustServForm.CustComplaints {
         protected global::System.Web.UI.WebControls.DropDownList locDDList;
         
         /// <summary>
+        /// CustName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CustName;
+        
+        /// <summary>
         /// CustEmail control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,33 @@ namespace CustServForm.CustComplaints {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dispDetails;
+        
+        /// <summary>
+        /// ReservationTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ReservationTextBox;
+        
+        /// <summary>
+        /// TicketTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TicketTextBox;
+        
+        /// <summary>
+        /// ParkTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ParkTextBox;
         
         /// <summary>
         /// commentBox control.

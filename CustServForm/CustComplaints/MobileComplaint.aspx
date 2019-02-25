@@ -53,7 +53,7 @@
     </asp:TableRow>
 
     <%-- Actual Incident Date Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+    <asp:TableRow Height="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Actual Incident Date</asp:Label>
         </asp:TableCell>
@@ -67,7 +67,7 @@
     </asp:TableRow>
 
     <%-- Origin of Complaint Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent" Width="500px">
+    <asp:TableRow Height="10px" BorderColor="Transparent" Width="500px">
         <asp:TableCell>
             <asp:Label runat="server">Origin of Complaint</asp:Label>
         </asp:TableCell>
@@ -77,6 +77,7 @@
                 <asp:listitem text="Email" value="email"></asp:listitem>
                 <asp:listitem text="Social Media" value="smedia"></asp:listitem>
                 <asp:ListItem Text="Phone" Value="phone"></asp:ListItem>
+                <asp:ListItem Text="Chat" Value="chat"></asp:ListItem>
             </asp:dropdownlist>
         </asp:TableCell>
         <asp:TableCell Width="1000px">
@@ -85,7 +86,7 @@
     </asp:TableRow>
 
     <%-- Disposition Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+    <asp:TableRow Height="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Disposition</asp:Label>
         </asp:TableCell>
@@ -99,7 +100,7 @@
     </asp:TableRow>
 
     <%-- Comments Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+    <asp:TableRow Height="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Comments</asp:Label>
         </asp:TableCell>

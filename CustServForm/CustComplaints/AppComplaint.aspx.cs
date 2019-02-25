@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 using System.Xml;
 
 namespace CustServForm
@@ -128,17 +129,25 @@ namespace CustServForm
         }
         public void showCal(object sender, EventArgs e)
         {
-            updatePage();
             if (calendar.Visible.Equals(false))
                 calendar.Visible = true;
             else { calendar.Visible = false; }
         }
 
-        private void updatePage()
-        {
-            throw new NotImplementedException();
-        }
 
+        //Error handling for < and > characters
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+
+            // Handle specific exception.
+            if (exc is HttpRequestValidationException)
+            {
+                MessageBox.Show("Formatting Error: Please remove any < or > characters from your text.");
+            }
+            // Clear the error from the server.
+            Server.ClearError();
+        }
         public void submitForm(object sender, EventArgs e)
         {
             FormData formData = new FormData();

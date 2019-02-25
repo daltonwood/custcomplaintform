@@ -145,7 +145,7 @@ namespace CustServForm.CustComplaints
             string fp = "No";
             if(_Membership == 1) { fp = "Yes"; }
             string body = "Location: "+_Location+"\nCustomer Email: "+_CustEmail+"\nFP Member: " + fp +
-                "\nDate of Incident"+_Date+"\nOrigin of Complaint: " + _Origin + "\nOrigin Description: " + _OriginComment +
+                "\nDate of Incident: "+_Date+"\nOrigin of Complaint: " + _Origin + "\nOrigin Description: " + _OriginComment +
                 "\nDisposition Type: " + _DispositionType + "\nDisposition Issue: " + _DispositionIssue + 
                 "\nOrigin Description: " + _OriginComment+"\nDescription: " + _Comments;
             return body;

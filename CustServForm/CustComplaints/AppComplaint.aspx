@@ -32,6 +32,16 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Customer Name--%>
+    <asp:TableRow Height="15px">
+        <asp:TableCell Width="40px">
+            <asp:Label runat="server">Customer Name</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
+        <asp:TextBox runat="server" ID="CustName" width="175px" Height="25px" placeholder ="Paste Customer Name"></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+
     <%-- Customer Email--%>
     <asp:TableRow Height="15px">
         <asp:TableCell Width="40px">
@@ -68,7 +78,7 @@
     </asp:TableRow>
 
     <%-- Actual Incident Date Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+    <asp:TableRow Height="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Actual Incident Date</asp:Label>
         </asp:TableCell>
@@ -94,7 +104,7 @@
     </asp:TableRow>
 
    <%-- Origin of Complaint Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent" Width="500px">
+    <asp:TableRow Height="10px" BorderColor="Transparent" Width="500px">
         <asp:TableCell>
             <asp:Label runat="server">Origin of Complaint</asp:Label>
         </asp:TableCell>
@@ -104,6 +114,7 @@
                 <asp:listitem text="Email" value="email"></asp:listitem>
                 <asp:listitem text="Social Media" value="smedia"></asp:listitem>
                 <asp:ListItem Text="Phone" Value="phone"></asp:ListItem>
+                <asp:ListItem Text="Chat" Value="chat"></asp:ListItem>
             </asp:dropdownlist>
         </asp:TableCell>
         <asp:TableCell borderWidth="15px" BorderColor="Transparent">
@@ -112,7 +123,7 @@
     </asp:TableRow>
 
     <%-- Disposition Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+    <asp:TableRow Height="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Disposition</asp:Label>
         </asp:TableCell>
@@ -125,8 +136,28 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Reservation Menu --%>
+    <asp:TableRow Height="15px">
+        <asp:TableCell Width="40px">
+            <asp:Label runat="server">Reservation Number</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
+        <asp:TextBox runat="server" ID="ReservationTextBox" width="175px" Height="25px" placeholder ="Paste Reservation Number"></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+
+    <%-- Type of Parking --%>
+    <asp:TableRow Height="15px">
+        <asp:TableCell Width="40px">
+            <asp:Label runat="server">Type of Parking</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
+        <asp:TextBox runat="server" ID="ParkTextBox" width="175px" Height="25px" placeholder ="Paste Parking Type"></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+
     <%-- Comments Menu --%>
-    <asp:TableRow BorderWidth="10px" BorderColor="Transparent">
+    <asp:TableRow Height="10px" BorderColor="Transparent">
         <asp:TableCell>
             <asp:Label runat="server">Comments</asp:Label>
         </asp:TableCell>
