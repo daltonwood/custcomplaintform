@@ -67,13 +67,13 @@ namespace CustServForm {
         protected global::System.Web.UI.WebControls.TextBox FPIDTxtBox;
         
         /// <summary>
-        /// gcsDateTextBox control.
+        /// dateTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gcsDateTextBox;
+        protected global::System.Web.UI.WebControls.TextBox dateTextBox;
         
         /// <summary>
         /// calendar control.

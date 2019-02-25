@@ -121,18 +121,30 @@ namespace CustServForm.CustComplaints
             {
                 name = "Customer Complaint",
                 priority = "High",
-                description = "Results from a customer complaint form",
-                custom_fields_value = new {
-                    name = "Membership",
-                    value = "True"
-                },
-                custom_fields_values =new[]
-                    { new
-                        {
-                            name = "Membership",
-                            value = "True"
-                        }
+                description = _Comments,
+                custom_fields_values = new
+                    {
+                    custom_fields_value = new[]
+                            {
+                                new
+                                {
+                                    name = "Membership",
+                                    value = _Membership.ToString()
+                                },
+                                new
+                                {
+                                    name = "Site",
+                                    value = _Location
+                                },
+                                new
+                                {
+                                    name = "Department",
+                                    value = "IT"
+                                }
+                            },
+                        
                     },
+
             };
             return body;
         }
@@ -142,11 +154,11 @@ namespace CustServForm.CustComplaints
             _Location = loc;
             _Membership = member;
             _Date = date;
-           // _Origin = origin;
-          //  _OriginComment = originComment;
+            _Origin = origin;
+            _OriginComment = originComment;
             _DispositionType = disp;
             _DispositionIssue = dispIssue;
-           // _Comments = comments;
+            _Comments = comments;
         }
     }
 }

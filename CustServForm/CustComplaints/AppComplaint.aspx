@@ -19,6 +19,8 @@
 <ContentTemplate>
 <div class="main-content">
 <asp:Table runat="server" >
+       
+    <%-- Customer Email --%>
 
 <%-- Location Menu --%>
     <asp:TableRow>
@@ -34,7 +36,7 @@
     <asp:TableRow Height="15px"></asp:TableRow>
     <asp:TableRow>
         <asp:TableCell>
-            <asp:Label runat="server" st>Is the Customer a member?</asp:Label>
+            <asp:Label runat="server">Is the Customer a member?</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
             <asp:RadioButtonList runat="server" OnSelectedIndexChanged="fp_selectedIndexChanged"  AutoPostBack="true" ID="FP_Radio">
@@ -61,7 +63,7 @@
             <asp:Label runat="server">Actual Incident Date</asp:Label>
         </asp:TableCell>
         <asp:TableCell>
-            <asp:TextBox runat="server" width="175px" ID="gcsDateTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" width="175px" ID="dateTextBox"></asp:TextBox>
         </asp:TableCell>
         <asp:TableCell borderWidth="15px" BorderColor="Transparent">
             <asp:ImageButton runat="server" src="calendarico.png" Width="25px" OnClick="showCal" AutoPostBack="true"/>
