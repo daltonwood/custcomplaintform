@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustServForm.CustComplaints;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -79,10 +81,7 @@ namespace CustServForm
             }
 
         }
-        public void submitForm(object sender, EventArgs e)
-        {
-            
-        }
+
         public void originChanged(object sender, EventArgs e)
         {
             //Find xml node based on selected item of dropdown menu
@@ -134,9 +133,18 @@ namespace CustServForm
                 calendar.Visible = true;
             else { calendar.Visible = false; }
         }
-        public void updatePage()
-        {
 
+        private void updatePage()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void submitForm(object sender, EventArgs e)
+        {
+            FormData formData = new FormData();
+            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text);
+            JObject body = formData.FormatJSON();
+            SamanageConnectAPI.PostToSamanage(body);
         }
 
     }

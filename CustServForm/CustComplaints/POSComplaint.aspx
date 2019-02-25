@@ -29,6 +29,16 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Customer Email--%>
+    <asp:TableRow Height="15px">
+        <asp:TableCell Width="40px">
+            <asp:Label runat="server">Customer Email</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
+        <asp:TextBox runat="server" ID="CustEmail" width="175px" Height="25px" placeholder ="Place Customer Email Here."></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+
     <%-- Customer Membership Menu --%>
     <asp:TableRow>
         <asp:TableCell>
@@ -108,11 +118,10 @@
 
     <asp:TableRow>
         <asp:TableCell>
-            <asp:TextBox style="text-align: left; vertical-align: top" runat="server" id="TextBox1" ColumnSpan="3" Height="400px" Width="500px"></asp:TextBox>
+            <asp:TextBox style="text-align: left; vertical-align: top" runat="server" id="commentBox" ColumnSpan="3" Height="400px" Width="500px"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
     <asp:TableRow Height="15px"></asp:TableRow></asp:Table>
-    <br />
     <button id="mSubmitForm" onclick="submitForm">Submit</button>
 </div>
 </ContentTemplate>

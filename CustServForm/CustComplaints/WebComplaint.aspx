@@ -29,6 +29,16 @@
         </asp:TableCell>
     </asp:TableRow>
 
+    <%-- Customer Email--%>
+    <asp:TableRow Height="15px">
+        <asp:TableCell Width="40px">
+            <asp:Label runat="server">Customer Email</asp:Label>
+        </asp:TableCell>
+        <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
+        <asp:TextBox runat="server" ID="CustEmail" width="175px" Height="25px" placeholder ="Place Customer Email Here."></asp:TextBox>
+        </asp:TableCell>
+    </asp:TableRow>
+
     <%-- Device Info Menu --%>
     <asp:TableRow>
         <asp:TableCell><asp:Label runat="server">Website accessed via:</asp:Label></asp:TableCell>

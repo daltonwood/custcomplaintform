@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -99,7 +100,22 @@ namespace CustServForm.CustComplaints
             }
         }
 
+        private string _CustEmail;
+        public string CustEmail
+        {
+            get
+            {
+                return _CustEmail;
+            }
+            set
+            {
+                _CustEmail = value;
+            }
+        }
+
+
         private string _Comments;
+
         public string Comments
         {
             get
@@ -112,44 +128,30 @@ namespace CustServForm.CustComplaints
             }
         }
 
-        public dynamic FormatJSON()
+        public JObject FormatJSON()
         {
 
-            string vals = ("{\"name\":\"Customer Complaint\",\"priority\":\"High\"");
-
-            var body = new
+            JObject body = JObject.FromObject(new
             {
                 name = "Customer Complaint",
-                priority = "High",
-                description = _Comments,
-                custom_fields_values = new
-                    {
-                    custom_fields_value = new[]
-                            {
-                                new
-                                {
-                                    name = "Membership",
-                                    value = _Membership.ToString()
-                                },
-                                new
-                                {
-                                    name = "Site",
-                                    value = _Location
-                                },
-                                new
-                                {
-                                    name = "Department",
-                                    value = "IT"
-                                }
-                            },
-                        
-                    },
-
-            };
+                priority = "Low",
+                description = CreateDescription(),
+            });
             return body;
         }
 
-        public void Fill(string loc, int member, string date, string origin, string originComment, string disp, string dispIssue, string comments)
+        private string CreateDescription()
+        {
+            string fp = "No";
+            if(_Membership == 1) { fp = "Yes"; }
+            string body = "Location: "+_Location+"\nCustomer Email: "+_CustEmail+"\nFP Member: " + fp +
+                "\nDate of Incident"+_Date+"\nOrigin of Complaint: " + _Origin + "\nOrigin Description: " + _OriginComment +
+                "\nDisposition Type: " + _DispositionType + "\nDisposition Issue: " + _DispositionIssue + 
+                "\nOrigin Description: " + _OriginComment+"\nDescription: " + _Comments;
+            return body;
+        }
+
+        public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, string dispIssue, string comments)
         {
             _Location = loc;
             _Membership = member;
@@ -159,6 +161,7 @@ namespace CustServForm.CustComplaints
             _DispositionType = disp;
             _DispositionIssue = dispIssue;
             _Comments = comments;
+            _CustEmail = custEmail;
         }
     }
 }

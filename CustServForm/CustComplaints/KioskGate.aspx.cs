@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CustServForm.CustComplaints
 {
@@ -134,8 +135,8 @@ namespace CustServForm.CustComplaints
         public void submitForm(object sender, EventArgs e)
         {
             FormData formData = new FormData();
-            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), gcsDateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text);
-            var body = formData.FormatJSON();
+            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, gcsDateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text);
+            JObject body = formData.FormatJSON();
             SamanageConnectAPI.PostToSamanage(body);
         }
     }
