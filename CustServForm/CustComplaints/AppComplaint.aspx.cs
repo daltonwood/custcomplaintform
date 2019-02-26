@@ -148,12 +148,15 @@ namespace CustServForm
             // Clear the error from the server.
             Server.ClearError();
         }
-        public void submitForm(object sender, EventArgs e)
+        public void SubmitForm(object sender, EventArgs e)
         {
             FormData formData = new FormData();
             formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, CustName.Text, ReservationTextBox.Text);
-            JObject body = formData.FormatJSON();
-            SamanageConnectAPI.PostToSamanage(body);
+            JObject body = formData.FormatJSON("App Complaint");
+            if (SamanageConnectAPI.PostToSamanage(body))
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);
+            else
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
         }
 
     }

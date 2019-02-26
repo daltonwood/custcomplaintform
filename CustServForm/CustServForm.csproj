@@ -138,6 +138,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CustComplaints\AppComplaint.aspx" />
+    <Content Include="CustComplaints\EditFormTable.aspx" />
     <Content Include="CustComplaints\xml\AppDispIssues.xml" />
     <Content Include="CustComplaints\calendarico.png" />
     <Content Include="CustComplaints\css\reset.css" />
@@ -146,7 +147,6 @@
     <Content Include="CustComplaints\KioskGate.aspx" />
     <Content Include="CustComplaints\xml\KioskGateDispIssues.xml" />
     <Content Include="CustComplaints\xml\Locations.xml" />
-    <Content Include="CustComplaints\MobileComplaint.aspx" />
     <Content Include="CustComplaints\POSComplaint.aspx" />
     <Content Include="CustComplaints\xml\OriginOfComplaint.xml" />
     <Content Include="CustComplaints\xml\POSDispIssues.xml" />
@@ -157,9 +157,6 @@
     <Content Include="CustComplaints\xml\WebDispIssues.xml" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="CustComplaints\IncidentForm.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -233,6 +230,13 @@
     <Compile Include="CustComplaints\AppComplaint.aspx.designer.cs">
       <DependentUpon>AppComplaint.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustComplaints\EditFormTable.aspx.cs">
+      <DependentUpon>EditFormTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustComplaints\EditFormTable.aspx.designer.cs">
+      <DependentUpon>EditFormTable.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CustComplaints\EditForm.aspx.cs">
       <DependentUpon>EditForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,13 +251,6 @@
     </Compile>
     <Compile Include="CustComplaints\KioskGate.aspx.designer.cs">
       <DependentUpon>KioskGate.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CustComplaints\MobileComplaint.aspx.cs">
-      <DependentUpon>MobileComplaint.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustComplaints\MobileComplaint.aspx.designer.cs">
-      <DependentUpon>MobileComplaint.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustComplaints\POSComplaint.aspx.cs">
       <DependentUpon>POSComplaint.aspx</DependentUpon>

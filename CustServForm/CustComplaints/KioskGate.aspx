@@ -11,7 +11,8 @@
     <li><a class="active" href="#!">Gate/Kiosk</a></li>
     <li><a href="POSComplaint.aspx">POS</a></li>
     <li><a href="Valet.aspx">Valet App</a></li>
-    <li style="float: right"><a href="EditForm.aspx">Edit Form</a></li>
+    <li style="float: right"><a href="EditForm.aspx">Add to Form</a></li>
+    <li style="float: right"><a href="EditFormTable.aspx">Edit Form</a></li>
 </ul>
 <!-- Main form content -->
 <asp:UpdatePanel runat="server" ID="panel" UpdateMode="Conditional">
@@ -160,12 +161,12 @@
 
     <asp:TableRow>
         <asp:TableCell>
-            <asp:TextBox style="text-align: left; vertical-align: top" runat="server" id="commentBox" ColumnSpan="3" Height="400px" Width="500px"></asp:TextBox>
+            <asp:TextBox TextMode="MultiLine" runat="server" id="commentBox" Height="200px" Width="400px" placeholder="Comment..." MaxLength="500"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
     <asp:TableRow Height="15px"></asp:TableRow>
 </asp:Table>
-    <button runat="server" type="button" id="mSubmitForm" onserverclick="submitForm">Submit</button>
+    <button runat="server" type="button" id="mSubmitForm" onserverclick="SubmitForm">Submit</button>
 </div>
 </ContentTemplate>
 </asp:UpdatePanel>

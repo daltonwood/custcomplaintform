@@ -1,14 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <location>ATL</location>
+<?xml version="1.0" standalone="yes"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <location>Plus</location>
-  <location>BNA</location>
-  <location>CLE</location>
-  <location>DFW</location>
-  <location>FLL</location>
-  <location>LAX</location>
-  <location>Philly</location>
-  <location>LAX</location>
-  <location>Oak</location>
-  <location>test test</location>
 </root>

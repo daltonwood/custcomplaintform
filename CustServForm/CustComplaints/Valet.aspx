@@ -11,7 +11,8 @@
     <li><a href="KioskGate.aspx">Gate/Kiosk</a></li>
     <li><a href="POSComplaint.aspx">POS</a></li>
     <li><a class="active" href="#!">Valet App</a></li>
-    <li style="float: right"><a href="EditForm.aspx">Edit Form</a></li>
+    <li style="float: right"><a href="EditForm.aspx">Add to Form</a></li>
+    <li style="float: right"><a href="EditFormTable.aspx">Edit Form</a></li>
 </ul>
 <!-- Main form content -->
 <asp:UpdatePanel runat="server" ID="panel" UpdateMode="Conditional">
@@ -25,7 +26,7 @@
             <asp:Label runat="server">Facility/Location</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-            <asp:dropdownlist runat="server" ID="locDDList" Width="170px" Height="25px"></asp:dropdownlist>
+            <asp:dropdownlist runat="server" ID="locDDList" Width="175px" Height="25px"></asp:dropdownlist>
         </asp:TableCell>
     </asp:TableRow>
 
@@ -159,12 +160,12 @@
 
     <asp:TableRow>
         <asp:TableCell>
-            <asp:TextBox style="text-align: left; vertical-align: top" runat="server" id="commentBox" ColumnSpan="3" Height="400px" Width="500px"></asp:TextBox>
+            <asp:TextBox TextMode="MultiLine" runat="server" id="commentBox" Height="200px" Width="400px" placeholder="Comment..." MaxLength="500"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
     <asp:TableRow Height="15px"></asp:TableRow>
 </asp:Table>
-    <button id="mSubmitForm" onclick="submitForm">Submit</button>
+    <button runat="server" id="mSubmitForm"  type="button" onserverclick="SubmitForm">Submit</button>
 </div>
 </ContentTemplate>
 </asp:UpdatePanel>

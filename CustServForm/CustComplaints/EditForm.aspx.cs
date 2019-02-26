@@ -137,7 +137,7 @@ namespace CustServForm.CustComplaints
                     DispLabel2.Visible = true;
                     dispList.Visible = true;
                     dispIssueText.Visible = true;
-                }
+            }
         }
 
         private void Page_Error(object sender, EventArgs e)
@@ -156,7 +156,7 @@ namespace CustServForm.CustComplaints
             // Server.ClearError();
         }
 
-        public void submitData(object sender, EventArgs e)
+        public void SubmitData(object sender, EventArgs e)
         {
             //Error handling
             var location = locText.Text;
@@ -164,10 +164,12 @@ namespace CustServForm.CustComplaints
             var dispositionText = dispIssueText.Text;
             Exception ex = Server.GetLastError();
             //Check Location for < > " or ' 
-           if (ex.Equals(null) && location.Contains("<"))
+            //Commented out due to null exception being thrown every submit button click
+           /*if (ex.Equals(null) && location.Contains("<"))
             {
                 ex = new Exception("Invalid Input for Location. Please refrain from using <, >, ', or \".");
             }
+            */
             //Check newDisposition for < > " or ' 
             if (newDisposition.Contains("<"))
             {
@@ -189,13 +191,19 @@ namespace CustServForm.CustComplaints
             if(newDisp.Text.Length != 0)
             {
                 //Run UpdateDisp method to insert new disposition into XML sheet
-                updateDisp();
+                UpdateDisp();
             }
             //Check if disposition textbox has data
             if(dispIssueText.Text.Length != 0)
             {
                 //Run UpdateDispIssues method to insert new disposition issue into XML sheet
                 UpdateDispIssues();
+            }
+            //Check if new Origin textbox has data
+            if(originText.Text.Length != 0)
+            {
+                //Run UpdateOrigin method to insert new Origin Of Complaint into XML sheet
+                UpdateOrigin();
             }
 
         }
@@ -240,7 +248,7 @@ namespace CustServForm.CustComplaints
             dispDoc.Save(@path);
         }
         //Add new Disposition Category to XML sheet
-        private void updateDisp()
+        private void UpdateDisp()
         {
             XmlDocument dispDoc = new XmlDocument();
             var path = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
@@ -266,6 +274,20 @@ namespace CustServForm.CustComplaints
             XmlElement elem = dispDoc.CreateElement(val);
             root.InsertAfter(elem, root.LastChild);
             dispDoc.Save(@path);
+        }
+
+        //Add new origin of complaint and hint
+        private void UpdateOrigin()
+        {
+            XmlDocument origDoc = new XmlDocument();
+            var path = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+            origDoc.Load(path);
+            string val = originText.Text.Replace(' ', '_');
+            XmlNode root = origDoc.DocumentElement;
+            XmlElement elem = origDoc.CreateElement(val);
+            elem.InnerText = originPHText.Text;
+            root.InsertAfter(elem, root.LastChild);
+            origDoc.Save(@path);
         }
     }
 }

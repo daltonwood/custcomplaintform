@@ -129,14 +129,30 @@ namespace CustServForm.CustComplaints
             }
         }
 
-        public JObject FormatJSON()
+        public JObject FormatJSON(string form)
         {
 
             JObject body = JObject.FromObject(new
             {
-                name = "Customer Complaint",
+                name = form + " Form",
                 priority = "Low",
-                description = CreateDescription(),
+                //description = CreateDescription(),
+                custom_fields_values = new
+                {
+                    custom_fields_value = new[]
+                    {
+                        new
+                        {
+                            name = "Disposition Type",
+                            value = DispositionType
+                        },
+                        new
+                        {
+                            name = "Disposition Issue",
+                            value = DispositionIssue
+                        }
+                    }
+                }
             });
             return body;
         }
@@ -148,9 +164,10 @@ namespace CustServForm.CustComplaints
             string body = "Location: "+_Location+"\nCustomer Email: "+_CustEmail+"\nFP Member: " + fp +
                 "\nDate of Incident: "+_Date+"\nOrigin of Complaint: " + _Origin + "\nOrigin Description: " + _OriginComment +
                 "\nDisposition Type: " + _DispositionType + "\nDisposition Issue: " + _DispositionIssue + 
-                "\nOrigin Description: " + _OriginComment+"\nDescription: " + _Comments;
+                "\nOrigin Description: " + _OriginComment+"\nComments: " + _Comments;
             return body;
         }
+
 
         public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket)
         {

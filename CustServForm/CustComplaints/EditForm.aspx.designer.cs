@@ -40,6 +40,24 @@ namespace CustServForm.CustComplaints {
         protected global::System.Web.UI.WebControls.TextBox locText;
         
         /// <summary>
+        /// originText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox originText;
+        
+        /// <summary>
+        /// originPHText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox originPHText;
+        
+        /// <summary>
         /// Disp_Radio control.
         /// </summary>
         /// <remarks>
@@ -92,24 +110,6 @@ namespace CustServForm.CustComplaints {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox dispIssueText;
-        
-        /// <summary>
-        /// originText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox originText;
-        
-        /// <summary>
-        /// originPHText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox originPHText;
         
         /// <summary>
         /// submitBtn control.
