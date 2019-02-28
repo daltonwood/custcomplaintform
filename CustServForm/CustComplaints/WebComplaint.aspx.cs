@@ -27,23 +27,23 @@ namespace CustServForm
                 var dispPath = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
-                XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
-                foreach (XmlNode n in dispNode)
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name.Replace('_', ' ');
-                    dispList.Items.Add(i);
+                    i.Text = n.Attributes[0].Value;
+                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
                 }
 
                 //Load disposition issues into dropdown menu
                 dispDoc.Load(dispPath);
-                dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
+                dispNode = dispDoc.SelectNodes("/root/Unit");
                 dispDetails.Items.Clear();
-                foreach (XmlNode n in dispNode)
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.InnerText.ToString();
-                    dispDetails.Items.Add(i);
+                    i.Text = n.Attributes[1].Value;
+                    if (n.Attributes[0].Value.Equals(dispList.SelectedValue)) { dispDetails.Items.Add(i); }
                 }
 
                 //Load Origin of Complaint categories into Drop Down Menu
@@ -66,14 +66,25 @@ namespace CustServForm
                 originTxtBox.Attributes.Add("placeholder", root.SelectSingleNode(" / root / " + val).InnerXml.ToString());
             }
             //Load Location XML list into Location Drop Down Menu
-            XmlNodeList node = locDoc.SelectNodes("/root/location");
-            foreach (XmlNode n in node)
+            XmlNodeList node = locDoc.SelectNodes("/root/Unit");
+            foreach (XmlElement n in node)
             {
                 ListItem i = new ListItem();
-                i.Text = n.InnerText.ToString().Replace('_', ' ');
+                i.Text = n.Attributes[0].Value;
                 locDDList.Items.Add(i);
             }
 
+        }
+
+        private bool isDuplicate(DropDownList dispList, string text)
+        {
+            Boolean b = false;
+            foreach (ListItem l in dispList.Items)
+            {
+                b = l.Text == text;
+            }
+
+            return b;
         }
 
         public void originChanged(object sender, EventArgs e)
@@ -91,16 +102,16 @@ namespace CustServForm
         public void dispListChanged(object sender, EventArgs e)
         {
             XmlDocument dispDoc = new XmlDocument();
-            dispDetails.Items.Clear();
             var dispPath = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
+            //Load disposition issues into dropdown menu
             dispDoc.Load(dispPath);
-            XmlNodeList dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
+            XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
             dispDetails.Items.Clear();
-            foreach (XmlNode n in dispNode)
+            foreach (XmlElement n in dispNode)
             {
                 ListItem i = new ListItem();
-                i.Text = n.InnerText.ToString();
-                dispDetails.Items.Add(i);
+                i.Text = n.Attributes[1].Value;
+                if (n.Attributes[0].Value.Equals(dispList.SelectedValue)) { dispDetails.Items.Add(i); }
             }
         }
 

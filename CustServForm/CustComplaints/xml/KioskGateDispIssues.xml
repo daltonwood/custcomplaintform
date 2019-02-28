@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <Scanning>
-    <issue>App</issue>
-    <issue>Physical Card</issue>
-  </Scanning>
+  <Unit DispType="Scanning" issue="App"/>
+  <Unit DispType="Scanning" issue="Physical Card"/>
 </root>

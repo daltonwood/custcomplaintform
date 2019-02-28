@@ -212,9 +212,9 @@ namespace CustServForm.CustComplaints
             XmlDocument locDoc = new XmlDocument();
             var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
             locDoc.Load(path);
-            XmlNode root = locDoc.SelectSingleNode("/root/location");
-            XmlElement elem = locDoc.CreateElement("location");
-            elem.InnerText = locText.Text;
+            XmlNode root = locDoc.SelectSingleNode("/root/Unit");
+            XmlElement elem = locDoc.CreateElement("Unit");
+            elem.SetAttribute("Location", locText.Text);
             root.ParentNode.AppendChild(elem);
             locDoc.Save(@path);
         }

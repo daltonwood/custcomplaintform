@@ -66,11 +66,11 @@ namespace CustServForm.CustComplaints
                 originTxtBox.Attributes.Add("placeholder", root.SelectSingleNode(" / root / " + val).InnerXml.ToString());
             }
             //Load Location XML list into Location Drop Down Menu
-            XmlNodeList node = locDoc.SelectNodes("/root/location");
-            foreach (XmlNode n in node)
+            XmlNodeList node = locDoc.SelectNodes("/root/Unit");
+            foreach (XmlElement n in node)
             {
                 ListItem i = new ListItem();
-                i.Text = n.InnerText.ToString().Replace('_', ' ');
+                i.Text = n.Attributes[0].Value;
                 locDDList.Items.Add(i);
             }
         }

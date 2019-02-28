@@ -1,20 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <Accounts>
-    <issue>Sign in</issue>
-    <issue>Can't edit profile</issue>
-  </Accounts>
-  <Discounts>
-    <issue>Does not appear</issue>
-  </Discounts>
-  <Rates>
-  </Rates>
-  <Post_Reservation>
-  </Post_Reservation>
-  <Ease_Of_Use>
-  </Ease_Of_Use>
-  <Phones>
-    <issue>Breaking</issue>
-    <issue>Phone Destroyed</issue>
-  </Phones>
+  <Unit DispType="Accounts" issue="Sign in"/>
+  <Unit DispType="Accounts" issue="Can't edit profile"/>
+  <Unit DispType="Discounts" issue="Does Not Appear"/>
+  <Unit DispType="Rates" issue=""/>
+  <Unit DispType="Post Reservation" issue=""/>
+  <Unit DispType="Ease of Use" issue=""/>
+  <Unit DispType="Phones" issue="Breaking"/>
+  <Unit DispType="Phones" issue="Phone Destroyed"/>
 </root>

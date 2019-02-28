@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <Scanning>
-    <issue>App</issue>
-    <issue>Physical Card</issue>
-  </Scanning>
-  <Login>
-    <issue>Can't Log In</issue>
-  </Login>
+  <Unit DispType="Scanning" issue="App"/>
+  <Unit DispType="Scanning" issue="Physical Card"/>
+  <Unit DispType="Login" issue="Can't Log In"/>
 </root>

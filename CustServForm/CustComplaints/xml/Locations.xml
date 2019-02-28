@@ -1,4 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
-<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <location>Plus</location>
+<root>
+  <Unit Location="ATL" />
+  <Unit Location="Plus" />
+  <Unit Location="MDW" />
 </root>
