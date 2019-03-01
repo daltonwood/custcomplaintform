@@ -5,7 +5,7 @@
   <Unit DispType="Discounts" issue="Does Not Appear" />
   <Unit DispType="Rates" issue="" />
   <Unit DispType="Post Reservation" issue="" />
-  <Unit DispType="Ease of Use"  issue=""/>
+  <Unit DispType="Ease of Use" issue="" />
   <Unit DispType="Phones" issue="Breaking" />
   <Unit DispType="Phones" issue="Phone Destroyed" />
 </root>

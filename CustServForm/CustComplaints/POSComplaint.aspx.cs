@@ -27,23 +27,23 @@ namespace CustServForm.CustComplaints
                 var dispPath = Server.MapPath(@"~/CustComplaints/xml/POSDispIssues.xml");
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
-                XmlNodeList dispNode = dispDoc.DocumentElement.ChildNodes;
-                foreach (XmlNode n in dispNode)
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name.Replace('_', ' ');
-                    dispList.Items.Add(i);
+                    i.Text = n.Attributes[0].Value;
+                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
                 }
 
                 //Load disposition issues into dropdown menu
                 dispDoc.Load(dispPath);
-                dispNode = dispDoc.SelectNodes("/root/" + dispList.SelectedItem.ToString() + "/issue");
+                dispNode = dispDoc.SelectNodes("/root/Unit");
                 dispDetails.Items.Clear();
-                foreach (XmlNode n in dispNode)
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.InnerText.ToString();
-                    dispDetails.Items.Add(i);
+                    i.Text = n.Attributes[1].Value;
+                    if (n.Attributes[0].Value.Equals(dispList.SelectedValue)) { dispDetails.Items.Add(i); }
                 }
 
                 //Load Origin of Complaint categories into Drop Down Menu
@@ -51,19 +51,25 @@ namespace CustServForm.CustComplaints
                 var origPath = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
                 origDoc.Load(origPath);
                 originList.Items.Clear();
-                XmlNodeList origNode = origDoc.DocumentElement.ChildNodes;
-                foreach (XmlNode n in origNode)
+                XmlNodeList origNode = origDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in origNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name.Replace('_', ' ');
+                    i.Text = n.Attributes[0].Value;
                     originList.Items.Add(i);
                 }
 
                 //Find xml node based on selected item of dropdown menu
-                string val = originList.SelectedItem.Text.Replace(' ', '_');
+                string val = originList.SelectedItem.Text;
                 origDoc.Load(origPath);
-                XmlNode root = origDoc.DocumentElement;
-                originTxtBox.Attributes.Add("placeholder", root.SelectSingleNode(" / root / " + val).InnerXml.ToString());
+                XmlNodeList origTypeNode = origDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in origTypeNode)
+                {
+                    if (n.Attributes[0].Value == originList.SelectedValue)
+                    {
+                        originTxtBox.Attributes.Add("placeholder", n.Attributes[1].Value);
+                    }
+                }
             }
             //Load Location XML list into Location Drop Down Menu
             XmlNodeList node = locDoc.SelectNodes("/root/Unit");
@@ -73,6 +79,17 @@ namespace CustServForm.CustComplaints
                 i.Text = n.Attributes[0].Value;
                 locDDList.Items.Add(i);
             }
+        }
+
+        private bool isDuplicate(DropDownList dispList, string text)
+        {
+            Boolean b = false;
+            foreach (ListItem l in dispList.Items)
+            {
+                b = l.Text == text;
+            }
+
+            return b;
         }
 
         public void dispListChanged(object sender, EventArgs e)
@@ -96,11 +113,17 @@ namespace CustServForm.CustComplaints
             //Find xml node based on selected item of dropdown menu
             XmlDocument origDoc = new XmlDocument();
             var path = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
-            string val = originList.SelectedItem.Text.Replace(' ', '_');
+            string val = originList.SelectedItem.Text;
             origDoc.Load(path);
-            XmlNode root = origDoc.DocumentElement;
+            XmlNodeList origTypeNode = origDoc.SelectNodes("/root/Unit");
+            foreach (XmlElement n in origTypeNode)
+            {
+                if (n.Attributes[0].Value == originList.SelectedValue)
+                {
+                    originTxtBox.Attributes.Add("placeholder", n.Attributes[1].Value);
+                }
+            }
 
-            originTxtBox.Attributes.Add("placeholder", root.SelectSingleNode(" / root / " + val).InnerXml.ToString());
         }
 
         public void dateChanged(object sender, EventArgs e)

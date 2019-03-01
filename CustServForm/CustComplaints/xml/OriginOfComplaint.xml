@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <Listen_360>Paste Listen 360</Listen_360>
-  <Email>Paste email here</Email>
-  <Social_Media>Enter details here</Social_Media>
-  <Phone>Enter extra details here</Phone>
-  <Chat>Enter chat details here</Chat>
+  <Unit OriginType="Listen360" Hint="Paste Listen 360" />
+  <Unit OriginType="Email" Hint="Paste email here" />
+  <Unit OriginType="Social Media" Hint="Enter details here" />
+  <Unit OriginType="Phone" Hint="Enter extra details here" />
+  <Unit OriginType="Chat" Hint="Enter chat details here" />
 </root>

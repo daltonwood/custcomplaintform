@@ -252,7 +252,6 @@ namespace CustServForm.CustComplaints
         protected void UpdateOrigin(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(originPath);
-            //int locIndex = e.RowIndex+1;
 
 
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
@@ -265,7 +264,6 @@ namespace CustServForm.CustComplaints
                 //Check the selected Row Index against the current iteration of i
                 if (e.RowIndex == i)
                 {
-                    //n.SetAttribute("Location", e.NewValues["Location"].ToString());
                     n.Attributes[i].Value = e.NewValues[i].ToString();
                 }
                 i++;

@@ -41,12 +41,12 @@ namespace CustServForm.CustComplaints
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
-                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
-                foreach (XmlNode n in node)
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name.Replace('_', ' ');
-                    dispList.Items.Add(i);
+                    i.Text = n.Attributes[0].Value;
+                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
                 }
 
                 DispLabel.Visible = true;
@@ -62,12 +62,12 @@ namespace CustServForm.CustComplaints
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
-                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
-                foreach (XmlNode n in node)
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name.Replace('_', ' ');
-                    dispList.Items.Add(i);
+                    i.Text = n.Attributes[0].Value;
+                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
                 }
 
                 DispLabel.Visible = true;
@@ -83,13 +83,14 @@ namespace CustServForm.CustComplaints
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
-                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
-                foreach (XmlNode n in node)
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name.Replace('_', ' ');
-                    dispList.Items.Add(i);
+                    i.Text = n.Attributes[0].Value;
+                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
                 }
+
                 DispLabel.Visible = true;
                 newDisp.Visible = true;
                 DispLabel2.Visible = true;
@@ -103,12 +104,12 @@ namespace CustServForm.CustComplaints
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
-                XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
-                foreach (XmlNode n in node)
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
-                    i.Text = n.Name.Replace('_', ' ');
-                    dispList.Items.Add(i);
+                    i.Text = n.Attributes[0].Value;
+                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
                 }
 
                 DispLabel.Visible = true;
@@ -124,20 +125,31 @@ namespace CustServForm.CustComplaints
                     dispDoc.Load(dispPath);
                     dispList.Items.Clear();
 
-                    XmlNodeList node = dispDoc.DocumentElement.ChildNodes;
-                    foreach (XmlNode n in node)
-                    {
-                        ListItem i = new ListItem();
-                        i.Text = n.Name.Replace('_', ' ');
-                        dispList.Items.Add(i);
-                    }
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in dispNode)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Attributes[0].Value;
+                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
+                }
 
-                    DispLabel.Visible = true;
+                DispLabel.Visible = true;
                     newDisp.Visible = true;
                     DispLabel2.Visible = true;
                     dispList.Visible = true;
                     dispIssueText.Visible = true;
             }
+        }
+
+        private bool isDuplicate(DropDownList dispList, string text)
+        {
+            Boolean b = false;
+            foreach (ListItem l in dispList.Items)
+            {
+                b = l.Text == text;
+            }
+
+            return b;
         }
 
         private void Page_Error(object sender, EventArgs e)
@@ -240,10 +252,10 @@ namespace CustServForm.CustComplaints
             }
             dispDoc.Load(path);
             string val = dispList.Text;
-            string nodeLoc = ("/root/" + val);
-            XmlNode root = dispDoc.SelectSingleNode(nodeLoc);
-            XmlElement elem = dispDoc.CreateElement("issue");
-            elem.InnerText = dispIssueText.Text;
+            XmlNode root = dispDoc.DocumentElement;
+            XmlElement elem = dispDoc.CreateElement("Unit");
+            elem.SetAttribute("DispType", dispList.Text);
+            elem.SetAttribute("issue", dispIssueText.Text);
             root.AppendChild(elem);
             dispDoc.Save(@path);
         }
@@ -269,9 +281,11 @@ namespace CustServForm.CustComplaints
                 path = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
             }
             dispDoc.Load(path);
-            string val = newDisp.Text.Replace(' ', '_');
+            string val = newDisp.Text;                    
             XmlNode root = dispDoc.DocumentElement;
-            XmlElement elem = dispDoc.CreateElement(val);
+            XmlElement elem = dispDoc.CreateElement("Unit");
+            elem.SetAttribute("DispType", val);
+            elem.SetAttribute("issue", "");
             root.InsertAfter(elem, root.LastChild);
             dispDoc.Save(@path);
         }
@@ -282,10 +296,11 @@ namespace CustServForm.CustComplaints
             XmlDocument origDoc = new XmlDocument();
             var path = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
             origDoc.Load(path);
-            string val = originText.Text.Replace(' ', '_');
+            string val = originText.Text;
             XmlNode root = origDoc.DocumentElement;
-            XmlElement elem = origDoc.CreateElement(val);
-            elem.InnerText = originPHText.Text;
+            XmlElement elem = origDoc.CreateElement("Unit");
+            elem.SetAttribute("OriginType", val);
+            elem.SetAttribute("Hint", originPHText.Text);
             root.InsertAfter(elem, root.LastChild);
             origDoc.Save(@path);
         }
