@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,14 +12,15 @@ namespace CustServForm.CustComplaints
 {
     public partial class EditForm : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 XmlDocument locDoc = new XmlDocument();
                 XmlDocument dispDoc = new XmlDocument();
-                var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
+                var path = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
+                var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
                 locDoc.Load(path);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
@@ -37,7 +39,7 @@ namespace CustServForm.CustComplaints
             if (Disp_Radio.SelectedItem.Value == "1")
             {
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
+                var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
@@ -58,7 +60,7 @@ namespace CustServForm.CustComplaints
             else if (Disp_Radio.SelectedItem.Value == "2")
             {
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/AppDispIssues.xml");
+                var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["appPath"]);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
@@ -79,7 +81,7 @@ namespace CustServForm.CustComplaints
             else if(Disp_Radio.SelectedItem.Value == "3")
             {
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/KioskGateDispIssues.xml");
+                var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["kioskPath"]);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
@@ -100,7 +102,7 @@ namespace CustServForm.CustComplaints
             else if (Disp_Radio.SelectedItem.Value == "4")
             {
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/POSDispIssues.xml");
+                var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["posPath"]);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
 
@@ -121,7 +123,7 @@ namespace CustServForm.CustComplaints
             else if (Disp_Radio.SelectedItem.Value == "5")
                 {
                     XmlDocument dispDoc = new XmlDocument();
-                    var dispPath = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
+                    var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["valetPath"]);
                     dispDoc.Load(dispPath);
                     dispList.Items.Clear();
 
@@ -174,24 +176,6 @@ namespace CustServForm.CustComplaints
             var location = locText.Text;
             var newDisposition = newDisp.Text;
             var dispositionText = dispIssueText.Text;
-            Exception ex = Server.GetLastError();
-            //Check Location for < > " or ' 
-            //Commented out due to null exception being thrown every submit button click
-           /*if (ex.Equals(null) && location.Contains("<"))
-            {
-                ex = new Exception("Invalid Input for Location. Please refrain from using <, >, ', or \".");
-            }
-            */
-            //Check newDisposition for < > " or ' 
-            if (newDisposition.Contains("<"))
-            {
-                ex = new Exception("Invalid Input for New Disposition Type. Please refrain from using <, >, ', or \".");
-            }
-            //Check dispositionText for < > " or ' 
-            if (dispositionText.Contains("<"))
-            {
-                ex = new Exception("Invalid Input for New Issue. Please refrain from using <, >, ', or \".");
-            }
 
             //Check if location textbox has data
             if (locText.Text.Length != 0)
@@ -222,33 +206,34 @@ namespace CustServForm.CustComplaints
         private void UpdateLocation()
         {
             XmlDocument locDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
             locDoc.Load(path);
             XmlNode root = locDoc.SelectSingleNode("/root/Unit");
             XmlElement elem = locDoc.CreateElement("Unit");
             elem.SetAttribute("Location", locText.Text);
             root.ParentNode.AppendChild(elem);
             locDoc.Save(@path);
+            MessageBox.Show("Location Added!");
         }
         private void UpdateDispIssues()
         {
             XmlDocument dispDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
             if (Disp_Radio.SelectedItem.Value == "2")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/AppDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["appPath"]);
             }
             else if (Disp_Radio.SelectedItem.Value == "3")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/KioskGateDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["kioskPath"]);
             }
             else if (Disp_Radio.SelectedItem.Value == "4")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/POSDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["posPath"]);
             }
             else if (Disp_Radio.SelectedItem.Value == "5")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["valetPath"]);
             }
             dispDoc.Load(path);
             string val = dispList.Text;
@@ -258,27 +243,29 @@ namespace CustServForm.CustComplaints
             elem.SetAttribute("issue", dispIssueText.Text);
             root.AppendChild(elem);
             dispDoc.Save(@path);
+            MessageBox.Show("Disposition Issue Added!");
+
         }
         //Add new Disposition Category to XML sheet
         private void UpdateDisp()
         {
             XmlDocument dispDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
             if (Disp_Radio.SelectedItem.Value == "2")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/AppDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["appPath"]);
             }
             else if (Disp_Radio.SelectedItem.Value == "3")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/KioskGateDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["kioskPath"]);
             }
             else if (Disp_Radio.SelectedItem.Value == "4")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/POSDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["posPath"]);
             }
             else if (Disp_Radio.SelectedItem.Value == "5")
             {
-                path = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
+                path = Server.MapPath(@ConfigurationManager.AppSettings["valetPath"]);
             }
             dispDoc.Load(path);
             string val = newDisp.Text;                    
@@ -288,13 +275,15 @@ namespace CustServForm.CustComplaints
             elem.SetAttribute("issue", "");
             root.InsertAfter(elem, root.LastChild);
             dispDoc.Save(@path);
+            MessageBox.Show("Disposition Type Added!");
+
         }
 
         //Add new origin of complaint and hint
         private void UpdateOrigin()
         {
             XmlDocument origDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["originPath"]);
             origDoc.Load(path);
             string val = originText.Text;
             XmlNode root = origDoc.DocumentElement;
@@ -303,6 +292,8 @@ namespace CustServForm.CustComplaints
             elem.SetAttribute("Hint", originPHText.Text);
             root.InsertAfter(elem, root.LastChild);
             origDoc.Save(@path);
+            MessageBox.Show("Origin Added!");
+
         }
     }
 }

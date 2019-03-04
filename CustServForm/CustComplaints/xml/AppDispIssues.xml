@@ -3,7 +3,7 @@
   <Unit DispType="Accounts" issue="Sign in" />
   <Unit DispType="Accounts" issue="Can't edit profile" />
   <Unit DispType="Discounts" issue="Does Not Appear" />
-  <Unit DispType="Rates" issue="" />
+  <Unit DispType="Rates" issue="Wrong Rate" />
   <Unit DispType="Post Reservation" issue="" />
   <Unit DispType="Ease of Use" issue="" />
   <Unit DispType="Phones" issue="Breaking" />

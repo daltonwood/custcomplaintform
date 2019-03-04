@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,7 +15,7 @@ namespace CustServForm.CustComplaints
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
             XmlDocument locDoc = new XmlDocument();
             locDoc.Load(path);
             locDDList.Items.Clear();
@@ -24,7 +25,7 @@ namespace CustServForm.CustComplaints
 
                 //Load Disposition Categories into Drop Down Menu
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
+                var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["valetPath"]);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
                 XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
@@ -43,12 +44,15 @@ namespace CustServForm.CustComplaints
                 {
                     ListItem i = new ListItem();
                     i.Text = n.Attributes[1].Value;
-                    if (n.Attributes[0].Value.Equals(dispList.SelectedValue)) { dispDetails.Items.Add(i); }
+                    if (n.Attributes[0].Value.Equals(dispList.SelectedValue) & !n.Attributes[1].Value.Equals(""))
+                    {
+                        dispDetails.Items.Add(i);
+                    }
                 }
 
                 //Load Origin of Complaint categories into Drop Down Menu
                 XmlDocument origDoc = new XmlDocument();
-                var origPath = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+                var origPath = Server.MapPath(@ConfigurationManager.AppSettings["originPath"]);
                 origDoc.Load(origPath);
                 originList.Items.Clear();
                 XmlNodeList origNode = origDoc.SelectNodes("/root/Unit");
@@ -95,16 +99,19 @@ namespace CustServForm.CustComplaints
         public void dispListChanged(object sender, EventArgs e)
         {
             XmlDocument dispDoc = new XmlDocument();
-            dispDetails.Items.Clear();
-            var dispPath = Server.MapPath(@"~/CustComplaints/xml/ValetDispIssues.xml");
+            var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["valetPath"]);
+            //Load disposition issues into dropdown menu
             dispDoc.Load(dispPath);
-            XmlNodeList dispNode = dispDoc.GetElementsByTagName(dispList.SelectedItem.Value);
+            XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
             dispDetails.Items.Clear();
-            foreach (XmlNode n in dispNode)
+            foreach (XmlElement n in dispNode)
             {
                 ListItem i = new ListItem();
-                i.Text = n.InnerText.ToString();
-                dispDetails.Items.Add(i);
+                i.Text = n.Attributes[1].Value;
+                if (n.Attributes[0].Value.Equals(dispList.SelectedValue) & !n.Attributes[1].Value.Equals(""))
+                {
+                    dispDetails.Items.Add(i);
+                }
             }
         }
 
@@ -112,7 +119,7 @@ namespace CustServForm.CustComplaints
         {
             //Find xml node based on selected item of dropdown menu
             XmlDocument origDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["originPath"]);
             string val = originList.SelectedItem.Text;
             origDoc.Load(path);
             XmlNodeList origTypeNode = origDoc.SelectNodes("/root/Unit");

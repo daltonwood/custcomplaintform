@@ -1,6 +1,8 @@
 <?xml version="1.0" standalone="yes"?>
 <root>
-  <Unit Location="ATL" />
-  <Unit Location="Plus" />
+  <Unit Location="ATL/Fly" />
+  <Unit Location="ATL/Plus" />
+  <Unit Location="BNA" />
   <Unit Location="MDW" />
+  <Unit Location="CLE" />
 </root>

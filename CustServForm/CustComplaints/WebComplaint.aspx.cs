@@ -1,5 +1,6 @@
 ﻿using CustServForm.CustComplaints;
 using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using System.IO;
+using System.Configuration;
 
 namespace CustServForm
 {
@@ -14,7 +17,7 @@ namespace CustServForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var path = Server.MapPath(@"~/CustComplaints/xml/Locations.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
             XmlDocument locDoc = new XmlDocument();
             locDoc.Load(path);
             locDDList.Items.Clear();
@@ -24,7 +27,7 @@ namespace CustServForm
 
                 //Load Disposition Categories into Drop Down Menu
                 XmlDocument dispDoc = new XmlDocument();
-                var dispPath = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
+                var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
                 XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
@@ -32,7 +35,10 @@ namespace CustServForm
                 {
                     ListItem i = new ListItem();
                     i.Text = n.Attributes[0].Value;
-                    if (!isDuplicate(dispList, i.Text)) { dispList.Items.Add(i); }
+                    if (!isDuplicate(dispList, i.Text))
+                    {
+                        dispList.Items.Add(i);
+                    }
                 }
 
                 //Load disposition issues into dropdown menu
@@ -43,12 +49,15 @@ namespace CustServForm
                 {
                     ListItem i = new ListItem();
                     i.Text = n.Attributes[1].Value;
-                    if (n.Attributes[0].Value.Equals(dispList.SelectedValue)) { dispDetails.Items.Add(i); }
+                    if (n.Attributes[0].Value.Equals(dispList.SelectedValue) & !n.Attributes[1].Value.Equals(""))
+                    {
+                        dispDetails.Items.Add(i);
+                    }
                 }
 
                 //Load Origin of Complaint categories into Drop Down Menu
                 XmlDocument origDoc = new XmlDocument();
-                var origPath = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+                var origPath = Server.MapPath(@ConfigurationManager.AppSettings["originPath"]);
                 origDoc.Load(origPath);
                 originList.Items.Clear();
                 XmlNodeList origNode = origDoc.SelectNodes("/root/Unit");
@@ -97,7 +106,7 @@ namespace CustServForm
         {
             //Find xml node based on selected item of dropdown menu
             XmlDocument origDoc = new XmlDocument();
-            var path = Server.MapPath(@"~/CustComplaints/xml/OriginOfComplaint.xml");
+            var path = Server.MapPath(@ConfigurationManager.AppSettings["originPath"]);
             string val = originList.SelectedItem.Text;
             origDoc.Load(path);
             XmlNodeList origTypeNode = origDoc.SelectNodes("/root/Unit");
@@ -114,7 +123,7 @@ namespace CustServForm
         public void dispListChanged(object sender, EventArgs e)
         {
             XmlDocument dispDoc = new XmlDocument();
-            var dispPath = Server.MapPath(@"~/CustComplaints/xml/WebDispIssues.xml");
+            var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
             //Load disposition issues into dropdown menu
             dispDoc.Load(dispPath);
             XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
@@ -123,7 +132,10 @@ namespace CustServForm
             {
                 ListItem i = new ListItem();
                 i.Text = n.Attributes[1].Value;
-                if (n.Attributes[0].Value.Equals(dispList.SelectedValue)) { dispDetails.Items.Add(i); }
+                if (n.Attributes[0].Value.Equals(dispList.SelectedValue) & !n.Attributes[1].Value.Equals(""))
+                {
+                    dispDetails.Items.Add(i);
+                }
             }
         }
 
