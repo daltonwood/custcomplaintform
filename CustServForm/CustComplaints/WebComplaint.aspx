@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WebComplaint.aspx.cs" Inherits="CustServForm.WebComplaint" %>
+﻿<%@ Page Title="Web Complaints" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WebComplaint.aspx.cs" Inherits="CustServForm.WebComplaint" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -54,9 +54,9 @@
     <asp:TableRow>
         <asp:TableCell><asp:Label runat="server">Website accessed via:</asp:Label></asp:TableCell>
         <asp:TableCell>
-            <asp:RadioButtonList runat="server">
-                <asp:ListItem>Computer</asp:ListItem>
-                <asp:ListItem>Mobile Device</asp:ListItem>
+            <asp:RadioButtonList id="webAccessRadioButtonList" runat="server">
+                <asp:ListItem Value="Computer">Computer</asp:ListItem>
+                <asp:ListItem Value="Mobile Device">Mobile Device</asp:ListItem>
             </asp:RadioButtonList>
         </asp:TableCell>
     </asp:TableRow>

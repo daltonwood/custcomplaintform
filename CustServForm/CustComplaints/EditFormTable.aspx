@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="EditFormTable.aspx.cs" Inherits="CustServForm.CustComplaints.EditFormTable" %>
+﻿<%@ Page Title="Edit Form" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="EditFormTable.aspx.cs" Inherits="CustServForm.CustComplaints.EditFormTable" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

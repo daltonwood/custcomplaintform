@@ -32,17 +32,11 @@ namespace CustServForm.CustComplaints
             This is the best way to display information from an XML file on a .NET website.
         */
 
-        //XmlDocument appDispIssues = new XmlDocument();
-        //XmlDocument KioskGateDispIssues = new XmlDocument();
-        //XmlDocument Locations = new XmlDocument();
-        //XmlDocument OriginOfComplaint = new XmlDocument();
-        //XmlDocument POSDispIssues = new XmlDocument();
-        //XmlDocument ValetDispIssues = new XmlDocument();
-        //XmlDocument WebDispIssues = new XmlDocument();
         XmlDocument xmlDoc = new XmlDocument();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //initializing paths
             appPath = Server.MapPath(@ConfigurationManager.AppSettings["appPath"]);
             kioskPath = Server.MapPath(@ConfigurationManager.AppSettings["kioskPath"]);
             locationPath = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
@@ -50,6 +44,8 @@ namespace CustServForm.CustComplaints
             posPath = Server.MapPath(@ConfigurationManager.AppSettings["posPath"]);
             valetPath = Server.MapPath(@ConfigurationManager.AppSettings["valetPath"]);
             webPath = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
+
+            //Initial Page Loading 
             if (!IsPostBack)
             {
                 EditList.SelectedValue = "Location";
@@ -60,9 +56,6 @@ namespace CustServForm.CustComplaints
                 //Create 2 DataTable's (Work better with GridView)
                 DataTable temp = ds.Tables[0];
                 DataTable dt = new DataTable();
-                //Get the current location from the drop down menu and set it as an integer
-                //int locationIndex = locIndex.SelectedIndex;
-                //Create an empty integer list
 
                 //Add columns to the data table
                 dt.Columns.Add("Location");
@@ -70,7 +63,6 @@ namespace CustServForm.CustComplaints
                 //Import rows from data table temp to data table dt
                 for (int x = 0; x < temp.Rows.Count; x++)
                 {
-                    //if (menuId[x] == locationIndex)
 
                     dt.ImportRow(temp.Rows[x]);
 
@@ -80,6 +72,7 @@ namespace CustServForm.CustComplaints
                 locTable.DataBind();
             }
 
+            //set locPath to the selected item to edit
             switch (EditList.SelectedValue)
             {
                 case "App":
@@ -106,11 +99,9 @@ namespace CustServForm.CustComplaints
             }
 
             changeEditor(sender, e);
-
-
-
         }
 
+        //Error Handling
         private void Page_Error(object sender, EventArgs e)
         {
             Exception exc = Server.GetLastError();
@@ -142,14 +133,12 @@ namespace CustServForm.CustComplaints
         protected void UpdateLocation(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(locationPath);
-            //int locIndex = e.RowIndex+1;
-
 
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
+            
             //Create int i to iterate alongside each XML element
             int i = 0;
-
-
+            
             foreach (XmlElement n in node)
             {
                 //Check the selected Row Index against the current iteration of i
@@ -160,9 +149,7 @@ namespace CustServForm.CustComplaints
                 }
                 i++;
             }
-
-
-
+            
             xmlDoc.Save(@locationPath);
             locTable.EditIndex = -1;
 
@@ -193,13 +180,11 @@ namespace CustServForm.CustComplaints
         protected void UpdateApp(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(appPath);
-            //int locIndex = e.RowIndex+1;
-
-
+            
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
+            
             //Create int i to iterate alongside each XML element
             int i = 0;
-
 
             foreach (XmlElement n in node)
             {
@@ -212,8 +197,6 @@ namespace CustServForm.CustComplaints
                 }
                 i++;
             }
-
-
 
             xmlDoc.Save(@appPath);
             appTable.EditIndex = -1;
@@ -245,14 +228,12 @@ namespace CustServForm.CustComplaints
         protected void UpdateKiosk(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(kioskPath);
-            //int locIndex = e.RowIndex+1;
-
-
+            
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
+           
             //Create int i to iterate alongside each XML element
             int i = 0;
-
-
+            
             foreach (XmlElement n in node)
             {
                 //Check the selected Row Index against the current iteration of i
@@ -264,9 +245,7 @@ namespace CustServForm.CustComplaints
                 }
                 i++;
             }
-
-
-
+            
             xmlDoc.Save(@kioskPath);
             kioskTable.EditIndex = -1;
 
@@ -297,13 +276,12 @@ namespace CustServForm.CustComplaints
         protected void UpdateOrigin(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(originPath);
-
-
+            
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
+            
             //Create int i to iterate alongside each XML element
             int i = 0;
-
-
+            
             foreach (XmlElement n in node)
             {
                 //Check the selected Row Index against the current iteration of i
@@ -315,8 +293,6 @@ namespace CustServForm.CustComplaints
                 }
                 i++;
             }
-
-
 
             xmlDoc.Save(@originPath);
             originTable.EditIndex = -1;
@@ -348,14 +324,11 @@ namespace CustServForm.CustComplaints
         protected void UpdatePOS(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(posPath);
-            //int locIndex = e.RowIndex+1;
-
-
+       
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
             //Create int i to iterate alongside each XML element
             int i = 0;
-
-
+            
             foreach (XmlElement n in node)
             {
                 //Check the selected Row Index against the current iteration of i
@@ -367,9 +340,7 @@ namespace CustServForm.CustComplaints
                 }
                 i++;
             }
-
-
-
+            
             xmlDoc.Save(@posPath);
             posTable.EditIndex = -1;
 
@@ -401,14 +372,12 @@ namespace CustServForm.CustComplaints
         protected void UpdateValet(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(valetPath);
-            //int locIndex = e.RowIndex+1;
-
 
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
+            
             //Create int i to iterate alongside each XML element
             int i = 0;
-
-
+            
             foreach (XmlElement n in node)
             {
                 //Check the selected Row Index against the current iteration of i
@@ -420,9 +389,7 @@ namespace CustServForm.CustComplaints
                 }
                 i++;
             }
-
-
-
+            
             xmlDoc.Save(@valetPath);
             valetTable.EditIndex = -1;
 
@@ -453,13 +420,10 @@ namespace CustServForm.CustComplaints
         protected void UpdateWeb(object sender, GridViewUpdateEventArgs e)
         {
             xmlDoc.Load(webPath);
-            //int locIndex = e.RowIndex+1;
-
 
             XmlNodeList node = xmlDoc.SelectNodes("/root/Unit");
             //Create int i to iterate alongside each XML element
             int i = 0;
-
 
             foreach (XmlElement n in node)
             {
@@ -472,9 +436,7 @@ namespace CustServForm.CustComplaints
                 }
                 i++;
             }
-
-
-
+            
             xmlDoc.Save(@webPath);
             webTable.EditIndex = -1;
 
@@ -487,8 +449,10 @@ namespace CustServForm.CustComplaints
             Page_Load(Server, e);
         }
 
+        //Sets the table to reflect what the user desires to edit
         public void changeEditor(object sender, EventArgs e)
         {
+            //resets table visibility
             appTable.Visible = false;
             kioskTable.Visible = false;
             locTable.Visible = false;
@@ -497,7 +461,7 @@ namespace CustServForm.CustComplaints
             valetTable.Visible = false;
             webTable.Visible = false;
 
-
+            //determines what happens based off of user's choice on what needs to be edited
             switch (EditList.SelectedValue) {
                 case "App":
                     appTable.Visible = true;
@@ -508,9 +472,6 @@ namespace CustServForm.CustComplaints
                     //Create 2 DataTable's (Work better with GridView)
                     DataTable temp = ds.Tables[0];
                     DataTable dt = new DataTable();
-                    //Get the current location from the drop down menu and set it as an integer
-                    //int locationIndex = locIndex.SelectedIndex;
-                    //Create an empty integer list
 
                     //Add columns to the data table
                     dt.Columns.Add("DispType");
@@ -519,10 +480,7 @@ namespace CustServForm.CustComplaints
                     //Import rows from data table temp to data table dt
                     for (int x = 0; x < temp.Rows.Count; x++)
                     {
-                        //if (menuId[x] == locationIndex)
-
                         dt.ImportRow(temp.Rows[x]);
-
                     }
 
                     appTable.DataSource = dt.DefaultView;
@@ -537,9 +495,6 @@ namespace CustServForm.CustComplaints
                     //Create 2 DataTable's (Work better with GridView)
                     temp = ds.Tables[0];
                     dt = new DataTable();
-                    //Get the current location from the drop down menu and set it as an integer
-                    //int locationIndex = locIndex.SelectedIndex;
-                    //Create an empty integer list
 
                     //Add columns to the data table
                     dt.Columns.Add("DispType");
@@ -548,10 +503,7 @@ namespace CustServForm.CustComplaints
                     //Import rows from data table temp to data table dt
                     for (int x = 0; x < temp.Rows.Count; x++)
                     {
-                        //if (menuId[x] == locationIndex)
-
                         dt.ImportRow(temp.Rows[x]);
-
                     }
 
                     kioskTable.DataSource = dt.DefaultView;
@@ -566,20 +518,14 @@ namespace CustServForm.CustComplaints
                     //Create 2 DataTable's (Work better with GridView)
                     temp = ds.Tables[0];
                     dt = new DataTable();
-                    //Get the current location from the drop down menu and set it as an integer
-                    //int locationIndex = locIndex.SelectedIndex;
-                    //Create an empty integer list
-
+                    
                     //Add columns to the data table
                     dt.Columns.Add("Location");
 
                     //Import rows from data table temp to data table dt
                     for (int x = 0; x < temp.Rows.Count; x++)
                     {
-                        //if (menuId[x] == locationIndex)
-
                         dt.ImportRow(temp.Rows[x]);
-
                     }
 
                     locTable.DataSource = dt.DefaultView;
@@ -594,9 +540,6 @@ namespace CustServForm.CustComplaints
                     //Create 2 DataTable's (Work better with GridView)
                     temp = ds.Tables[0];
                     dt = new DataTable();
-                    //Get the current location from the drop down menu and set it as an integer
-                    //int locationIndex = locIndex.SelectedIndex;
-                    //Create an empty integer list
 
                     //Add columns to the data table
                     dt.Columns.Add("OriginType");
@@ -605,10 +548,7 @@ namespace CustServForm.CustComplaints
                     //Import rows from data table temp to data table dt
                     for (int x = 0; x < temp.Rows.Count; x++)
                     {
-                        //if (menuId[x] == locationIndex)
-
                         dt.ImportRow(temp.Rows[x]);
-
                     }
 
                     originTable.DataSource = dt.DefaultView;
@@ -623,9 +563,6 @@ namespace CustServForm.CustComplaints
                     //Create 2 DataTable's (Work better with GridView)
                     temp = ds.Tables[0];
                     dt = new DataTable();
-                    //Get the current location from the drop down menu and set it as an integer
-                    //int locationIndex = locIndex.SelectedIndex;
-                    //Create an empty integer list
 
                     //Add columns to the data table
                     dt.Columns.Add("DispType");
@@ -634,10 +571,7 @@ namespace CustServForm.CustComplaints
                     //Import rows from data table temp to data table dt
                     for (int x = 0; x < temp.Rows.Count; x++)
                     {
-                        //if (menuId[x] == locationIndex)
-
                         dt.ImportRow(temp.Rows[x]);
-
                     }
 
                     posTable.DataSource = dt.DefaultView;
@@ -652,9 +586,6 @@ namespace CustServForm.CustComplaints
                     //Create 2 DataTable's (Work better with GridView)
                     temp = ds.Tables[0];
                     dt = new DataTable();
-                    //Get the current location from the drop down menu and set it as an integer
-                    //int locationIndex = locIndex.SelectedIndex;
-                    //Create an empty integer list
 
                     //Add columns to the data table
                     dt.Columns.Add("DispType");
@@ -663,10 +594,7 @@ namespace CustServForm.CustComplaints
                     //Import rows from data table temp to data table dt
                     for (int x = 0; x < temp.Rows.Count; x++)
                     {
-                        //if (menuId[x] == locationIndex)
-
                         dt.ImportRow(temp.Rows[x]);
-
                     }
 
                     valetTable.DataSource = dt.DefaultView;
@@ -681,10 +609,7 @@ namespace CustServForm.CustComplaints
                     //Create 2 DataTable's (Work better with GridView)
                     temp = ds.Tables[0];
                     dt = new DataTable();
-                    //Get the current location from the drop down menu and set it as an integer
-                    //int locationIndex = locIndex.SelectedIndex;
-                    //Create an empty integer list
-
+                    
                     //Add columns to the data table
                     dt.Columns.Add("DispType");
                     dt.Columns.Add("issue");
@@ -692,10 +617,7 @@ namespace CustServForm.CustComplaints
                     //Import rows from data table temp to data table dt
                     for (int x = 0; x < temp.Rows.Count; x++)
                     {
-                        //if (menuId[x] == locationIndex)
-
                         dt.ImportRow(temp.Rows[x]);
-
                     }
 
                     webTable.DataSource = dt.DefaultView;

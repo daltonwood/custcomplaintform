@@ -49,6 +49,32 @@ namespace CustServForm.CustComplaints
             }
         }
 
+        private string _MobileOS;
+        public string MobileOS
+        {
+            get
+            {
+                return _MobileOS;
+            }
+            set
+            {
+                _MobileOS = value;
+            }
+        }
+
+        private string _websiteAccess;
+        public string websiteAccess
+        {
+            get
+            {
+                return _websiteAccess;
+            }
+            set
+            {
+                _websiteAccess = value;
+            }
+        }
+
         private string _Origin;
         public string Origin
         {
@@ -101,7 +127,21 @@ namespace CustServForm.CustComplaints
             }
         }
 
+        private string _Reservation;
+        public string Reservation
+        {
+            get
+            {
+                return _Reservation;
+            }
+            set
+            {
+                _Reservation = value;
+            }
+        }
+
         private string _CustEmail;
+
         public string CustEmail
         {
             get
@@ -114,6 +154,17 @@ namespace CustServForm.CustComplaints
             }
         }
 
+        private string _Ticket;
+        public string Ticket {
+            get
+            {
+                return _Ticket;
+            }
+            set
+            {
+                _Ticket = value;
+            }
+        }
 
         private string _Comments;
 
@@ -136,7 +187,7 @@ namespace CustServForm.CustComplaints
             {
                 name = form + " Form",
                 priority = "Low",
-                //description = CreateDescription(),
+                description = CreateDescription(),
                 custom_fields_values = new
                 {
                     custom_fields_value = new[]
@@ -161,15 +212,22 @@ namespace CustServForm.CustComplaints
         {
             string fp = "No";
             if(_Membership == 1) { fp = "Yes"; }
-            string body = "Location: "+_Location+"\nCustomer Email: "+_CustEmail+"\nFP Member: " + fp +
-                "\nDate of Incident: "+_Date+"\nOrigin of Complaint: " + _Origin + "\nOrigin Description: " + _OriginComment +
-                "\nDisposition Type: " + _DispositionType + "\nDisposition Issue: " + _DispositionIssue + 
-                "\nOrigin Description: " + _OriginComment+"\nComments: " + _Comments;
+            string body = "Location: " + _Location + "\n\nCustomer Email: " + _CustEmail + "\n\nFP Member: " + fp +
+                "\n\nDate of Incident: " + _Date + "\n\nOrigin of Complaint: " + _Origin + "\n\nOrigin Description: " +
+                _OriginComment + "\n\nDisposition Type: " + _DispositionType + "\n\nDisposition Issue: " + _DispositionIssue +
+                "\n\nReservation: " + _Reservation;
+
+            if (_Ticket!=null) {body += "\n\nTicket: " + _Ticket; }
+            else if(_MobileOS != null) { body += "\n\nMobile OS: " + _MobileOS; }
+            else if (_websiteAccess != null) { body += "\n\nWebsite accessed via: " + _websiteAccess; }
+
+            body += "\n\nComments: " + _Comments;
+
             return body;
         }
 
 
-        public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket)
+        public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket, [Optional] string mobileOS, [Optional] string websiteAccess)
         {
             _Location = loc;
             _Membership = member;
@@ -180,6 +238,10 @@ namespace CustServForm.CustComplaints
             _DispositionIssue = dispIssue;
             _Comments = comments;
             _CustEmail = custEmail;
+            _Reservation = reservation;
+            _Ticket = ticket;
+            _MobileOS = mobileOS;
+            _websiteAccess = websiteAccess;
         }
     }
 }

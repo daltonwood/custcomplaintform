@@ -17,11 +17,13 @@ namespace CustServForm
         
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Loading location dropdown
             var path = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
             XmlDocument locDoc = new XmlDocument();
             locDoc.Load(path);
             locDDList.Items.Clear();
+
+            //Initial page loading
             if (!IsPostBack)
             {
                 calendar.Visible = false;
@@ -89,6 +91,7 @@ namespace CustServForm
 
         }
 
+        //Checks for duplicates in dropdownlists
         private bool isDuplicate(DropDownList dispList, string text)
         {
             Boolean b = false;
@@ -100,6 +103,7 @@ namespace CustServForm
             return b;
         }
 
+        //Updates the page based on the change in Origin of Complaint
         public void originChanged(object sender, EventArgs e)
         {
             //Find xml node based on selected item of dropdown menu
@@ -117,11 +121,14 @@ namespace CustServForm
             }
 
         }
+
+        //Adds the date of the incident to the form
         public void dateChanged(object sender, EventArgs e)
         {
             dateTextBox.Text = (calendar.SelectedDate.ToShortDateString());
             calendar.Visible = false;
         }
+
         //Load new disposition issues when a new disposition category is selected
         public void dispListChanged(object sender, EventArgs e)
         {
@@ -139,6 +146,7 @@ namespace CustServForm
             }
         }
 
+        //Updates page based on customer's membership
         public void fp_selectedIndexChanged(object sender, EventArgs e) {
             if (FP_Radio.SelectedItem.Value == "1") {
                 FPIDTxtBox.Visible = true;
@@ -150,6 +158,8 @@ namespace CustServForm
 
             }
         }
+
+        //Displays/Hides calendar
         public void showCal(object sender, EventArgs e)
         {
             if (calendar.Visible.Equals(false))
@@ -171,10 +181,12 @@ namespace CustServForm
             // Clear the error from the server.
             Server.ClearError();
         }
+
+        //Submits the contents of the form to Samanage
         public void SubmitForm(object sender, EventArgs e)
         {
             FormData formData = new FormData();
-            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, CustName.Text, ReservationTextBox.Text);
+            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, CustName.Text, ReservationTextBox.Text, mobileOS: MobileOSList.SelectedValue);
             JObject body = formData.FormatJSON("App Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);

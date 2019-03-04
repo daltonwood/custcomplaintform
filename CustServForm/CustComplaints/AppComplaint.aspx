@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AppComplaint.aspx.cs" Inherits="CustServForm.AppComplaint" %>
+﻿<%@ Page Title="App Complaints" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AppComplaint.aspx.cs" Inherits="CustServForm.AppComplaint" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

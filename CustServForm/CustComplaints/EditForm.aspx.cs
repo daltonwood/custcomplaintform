@@ -57,6 +57,7 @@ namespace CustServForm.CustComplaints
                 dispList.Visible = true;
                 dispIssueText.Visible = true;
             }
+
             else if (Disp_Radio.SelectedItem.Value == "2")
             {
                 XmlDocument dispDoc = new XmlDocument();
@@ -78,6 +79,7 @@ namespace CustServForm.CustComplaints
                 dispList.Visible = true;
                 dispIssueText.Visible = true;
             }
+
             else if(Disp_Radio.SelectedItem.Value == "3")
             {
                 XmlDocument dispDoc = new XmlDocument();
@@ -203,6 +205,7 @@ namespace CustServForm.CustComplaints
             }
 
         }
+
         private void UpdateLocation()
         {
             XmlDocument locDoc = new XmlDocument();
@@ -215,6 +218,7 @@ namespace CustServForm.CustComplaints
             locDoc.Save(@path);
             MessageBox.Show("Location Added!");
         }
+
         private void UpdateDispIssues()
         {
             XmlDocument dispDoc = new XmlDocument();
@@ -244,8 +248,8 @@ namespace CustServForm.CustComplaints
             root.AppendChild(elem);
             dispDoc.Save(@path);
             MessageBox.Show("Disposition Issue Added!");
-
         }
+
         //Add new Disposition Category to XML sheet
         private void UpdateDisp()
         {
@@ -276,7 +280,6 @@ namespace CustServForm.CustComplaints
             root.InsertAfter(elem, root.LastChild);
             dispDoc.Save(@path);
             MessageBox.Show("Disposition Type Added!");
-
         }
 
         //Add new origin of complaint and hint
@@ -293,7 +296,6 @@ namespace CustServForm.CustComplaints
             root.InsertAfter(elem, root.LastChild);
             origDoc.Save(@path);
             MessageBox.Show("Origin Added!");
-
         }
     }
 }
