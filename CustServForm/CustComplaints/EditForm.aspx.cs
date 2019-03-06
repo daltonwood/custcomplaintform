@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace CustServForm.CustComplaints
 {
@@ -216,6 +218,16 @@ namespace CustServForm.CustComplaints
             elem.SetAttribute("Location", locText.Text);
             root.ParentNode.AppendChild(elem);
             locDoc.Save(@path);
+
+            //Ordering the document
+            XDocument doc = XDocument.Load(@path);
+            IEnumerable<XElement> e = doc.Elements("Unit");
+
+            var rootDoc = doc.Element("root")
+                .Elements("Unit")
+                .OrderBy(s => (string)s.Attribute("Location"));
+            XDocument newDoc = new XDocument(new XElement("root", rootDoc));
+            newDoc.Save(@path);
             MessageBox.Show("Location Added!");
         }
 
@@ -247,6 +259,16 @@ namespace CustServForm.CustComplaints
             elem.SetAttribute("issue", dispIssueText.Text);
             root.AppendChild(elem);
             dispDoc.Save(@path);
+
+            //Ordering the document
+            XDocument doc = XDocument.Load(@path);
+            IEnumerable<XElement> e = doc.Elements("Unit");
+
+            var rootDoc = doc.Element("root")
+                .Elements("Unit")
+                .OrderBy(s => (string)s.Attribute("DispType"));
+            XDocument newDoc = new XDocument(new XElement("root", rootDoc));
+            newDoc.Save(@path);
             MessageBox.Show("Disposition Issue Added!");
         }
 
@@ -279,6 +301,16 @@ namespace CustServForm.CustComplaints
             elem.SetAttribute("issue", "");
             root.InsertAfter(elem, root.LastChild);
             dispDoc.Save(@path);
+
+            //Ordering the document
+            XDocument doc = XDocument.Load(@path);
+            IEnumerable<XElement> e = doc.Elements("Unit");
+
+            var rootDoc = doc.Element("root")
+                .Elements("Unit")
+                .OrderBy(s => (string)s.Attribute("DispType"));
+            XDocument newDoc = new XDocument(new XElement("root", rootDoc));
+            newDoc.Save(@path);
             MessageBox.Show("Disposition Type Added!");
         }
 
@@ -295,6 +327,16 @@ namespace CustServForm.CustComplaints
             elem.SetAttribute("Hint", originPHText.Text);
             root.InsertAfter(elem, root.LastChild);
             origDoc.Save(@path);
+
+            //Ordering the document
+            XDocument doc = XDocument.Load(@path);
+            IEnumerable<XElement> e = doc.Elements("Unit");
+
+            var rootDoc = doc.Element("root")
+                .Elements("Unit")
+                .OrderBy(s => (string)s.Attribute("OriginType"));
+            XDocument newDoc = new XDocument(new XElement("root", rootDoc));
+            newDoc.Save(@path);
             MessageBox.Show("Origin Added!");
         }
     }

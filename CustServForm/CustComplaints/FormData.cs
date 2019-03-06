@@ -166,6 +166,33 @@ namespace CustServForm.CustComplaints
             }
         }
 
+        private string _FPTier;
+        public string FPTier
+        {
+            get
+            {
+                return _FPTier;
+            }
+            set
+            {
+                _FPTier = value;
+            }
+        }
+
+        private string _FPNumber;
+        public string FPNumber
+        {
+            get
+            {
+                return _FPNumber;
+            }
+            set
+            {
+                _FPNumber = value;
+            }
+        }
+
+
         private string _Comments;
 
         public string Comments
@@ -210,9 +237,9 @@ namespace CustServForm.CustComplaints
 
         private string CreateDescription()
         {
-            string fp = "No";
-            if(_Membership == 1) { fp = "Yes"; }
-            string body = "Location: " + _Location + "\n\nCustomer Email: " + _CustEmail + "\n\nFP Member: " + fp +
+            string fp = "\n\nFP Member: No";
+            if(_Membership == 1) { fp = "\n\nFP Member: Yes"+ "\tFP Tier:"+ FPTier + "\tFP Number: " + FPNumber; }
+            string body = "Location: " + _Location + "\n\nCustomer Email: " + _CustEmail + fp +
                 "\n\nDate of Incident: " + _Date + "\n\nOrigin of Complaint: " + _Origin + "\n\nOrigin Description: " +
                 _OriginComment + "\n\nDisposition Type: " + _DispositionType + "\n\nDisposition Issue: " + _DispositionIssue +
                 "\n\nReservation: " + _Reservation;
@@ -227,7 +254,9 @@ namespace CustServForm.CustComplaints
         }
 
 
-        public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket, [Optional] string mobileOS, [Optional] string websiteAccess)
+        public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, 
+            string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket, [Optional] string mobileOS, 
+            [Optional] string websiteAccess, string FPTier, string FPNumber)
         {
             _Location = loc;
             _Membership = member;
@@ -242,6 +271,8 @@ namespace CustServForm.CustComplaints
             _Ticket = ticket;
             _MobileOS = mobileOS;
             _websiteAccess = websiteAccess;
+            _FPNumber = FPNumber;
+            _FPTier = FPTier;
         }
     }
 }

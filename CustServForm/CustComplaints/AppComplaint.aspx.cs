@@ -9,6 +9,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
 using System.Xml;
+using System.IO;
+
 
 namespace CustServForm
 {
@@ -88,7 +90,42 @@ namespace CustServForm
                 i.Text = n.Attributes[0].Value;
                 locDDList.Items.Add(i);
             }
+            //Resizes origin textbox to fit text
+            int charRows = 0;
+            string tbContent;
+            int chars = 0;
+            tbContent = originTxtBox.Text;
+            originTxtBox.Columns = 50;
+            chars = tbContent.Length;
+            charRows = chars / originTxtBox.Columns;
+            int remaining = chars - charRows * originTxtBox.Columns;
+            if (remaining == 0)
+            {
+                originTxtBox.Rows = charRows;
+                originTxtBox.TextMode = TextBoxMode.MultiLine;
+            }
+            else
+            {
+                originTxtBox.Rows = charRows + 1;
+                originTxtBox.TextMode = TextBoxMode.MultiLine;
+            }
 
+        }
+
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+
+            var error = exc.ToString().Substring(0, 54);
+
+            // Handle specific exception.
+            if (error.Equals("System.Web.HttpRequestValidationException (0x80004005)"))
+            {
+                MessageBox.Show("Please refrain from using the < or > character.", "Error: Invalid Input",
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            // Clear the error from the server.
+            // Server.ClearError();
         }
 
         //Checks for duplicates in dropdownlists
@@ -166,27 +203,17 @@ namespace CustServForm
                 calendar.Visible = true;
             else { calendar.Visible = false; }
         }
-
-
-        //Error handling for < and > characters
-        private void Page_Error(object sender, EventArgs e)
-        {
-            Exception exc = Server.GetLastError();
-
-            // Handle specific exception.
-            if (exc is HttpRequestValidationException)
-            {
-                MessageBox.Show("Formatting Error: Please remove any < or > characters from your text.");
-            }
-            // Clear the error from the server.
-            Server.ClearError();
-        }
+        
 
         //Submits the contents of the form to Samanage
         public void SubmitForm(object sender, EventArgs e)
         {
             FormData formData = new FormData();
-            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, CustName.Text, ReservationTextBox.Text, mobileOS: MobileOSList.SelectedValue);
+            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, 
+                originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, 
+                CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, FPNumber: FPIDTxtBox.Text, 
+                mobileOS: MobileOSList.SelectedValue);
+
             JObject body = formData.FormatJSON("App Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);

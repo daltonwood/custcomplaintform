@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using System.Xml;
 using System.IO;
 using System.Configuration;
+using System.Windows;
 
 namespace CustServForm
 {
@@ -92,6 +93,43 @@ namespace CustServForm
                 locDDList.Items.Add(i);
             }
 
+            //Resizes origin textbox to fit text
+            int charRows = 0;
+            string tbContent;
+            int chars = 0;
+            tbContent = originTxtBox.Text;
+            originTxtBox.Columns = 50;
+            chars = tbContent.Length;
+            charRows = chars / originTxtBox.Columns;
+            int remaining = chars - charRows * originTxtBox.Columns;
+            if (remaining == 0)
+            {
+                originTxtBox.Rows = charRows;
+                originTxtBox.TextMode = TextBoxMode.MultiLine;
+            }
+            else
+            {
+                originTxtBox.Rows = charRows + 1;
+                originTxtBox.TextMode = TextBoxMode.MultiLine;
+            }
+
+        }
+
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+
+            var error = exc.ToString().Substring(0, 54);
+
+            // Handle specific exception.
+            if (error.Equals("System.Web.HttpRequestValidationException (0x80004005)"))
+            {
+               //originTxtBox.Text = exc.Message.Replace("<","");
+                MessageBox.Show("Please refrain from using the < or > character.", "Error: Invalid Input",
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            // Clear the error from the server.
+            // Server.ClearError();
         }
 
         //Checks for duplicates in dropdownlists
@@ -122,6 +160,7 @@ namespace CustServForm
                     originTxtBox.Attributes.Add("placeholder", n.Attributes[1].Value);
                 }
             }
+            originTxtBox.Text = "";
 
         }
 
@@ -181,7 +220,10 @@ namespace CustServForm
         public void SubmitForm(object sender, EventArgs e)
         {
             FormData formData = new FormData();
-            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, originList.SelectedItem.Text, originTxtBox.Text, dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, CustName.Text, ReservationTextBox.Text, websiteAccess: webAccessRadioButtonList.SelectedValue);
+            formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, 
+                originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, 
+                CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, FPNumber: FPIDTxtBox.Text, 
+                websiteAccess: webAccessRadioButtonList.SelectedValue);
             JObject body = formData.FormatJSON("Web Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);

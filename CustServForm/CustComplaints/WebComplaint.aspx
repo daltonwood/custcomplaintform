@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Web Complaints" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WebComplaint.aspx.cs" Inherits="CustServForm.WebComplaint" %>
+﻿<%@ Page Title="Web Complaints" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="WebComplaint.aspx.cs" Inherits="CustServForm.WebComplaint" ValidateRequest="false"%>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -114,7 +114,7 @@
             </asp:dropdownlist>
         </asp:TableCell>
         <asp:TableCell borderWidth="15px" BorderColor="Transparent">
-            <asp:TextBox runat="server" width="500px" AutoPostBack="true" Placeholder="Paste Listen 360" Visible="true" ID="originTxtBox"></asp:TextBox>
+            <asp:TextBox runat="server"  AutoPostBack="true"  Placeholder="Paste Listen 360" Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
@@ -155,6 +155,7 @@
     <%-- Comments Menu --%>
     <asp:TableRow Height="10px" BorderColor="Transparent">
         <asp:TableCell>
+            <asp:Label runat="server" ID="MyLabel" Visible ="false"></asp:Label>
             <asp:Label runat="server">Comments</asp:Label>
         </asp:TableCell>
     </asp:TableRow>

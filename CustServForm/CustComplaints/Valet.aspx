@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Valet Complaints" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Valet.aspx.cs" Inherits="CustServForm.CustComplaints.Valet" %>
+﻿<%@ Page Title="Valet Complaints" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Valet.aspx.cs" ValidateRequest="false" Inherits="CustServForm.CustComplaints.Valet" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

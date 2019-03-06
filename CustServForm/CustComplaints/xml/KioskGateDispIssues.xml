@@ -2,6 +2,5 @@
 <root>
   <Unit DispType="Scanning" issue="App" />
   <Unit DispType="Scanning" issue="Physical Card" />
-  <Unit DispType="Printing" issue="" />
   <Unit DispType="Printing" issue="Tickets not printing clearly" />
 </root>

@@ -1,8 +1,20 @@
-<?xml version="1.0" standalone="yes"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <Unit Location="ATL/Fly" />
   <Unit Location="ATL/Plus" />
   <Unit Location="BNA" />
-  <Unit Location="MDW" />
   <Unit Location="CLE" />
+  <Unit Location="DFW" />
+  <Unit Location="FLL" />
+  <Unit Location="IAH" />
+  <Unit Location="LAX" />
+  <Unit Location="MDW" />
+  <Unit Location="MIA" />
+  <Unit Location="MSP" />
+  <Unit Location="MSY" />
+  <Unit Location="OAK" />
+  <Unit Location="ONT" />
+  <Unit Location="PHL" />
+  <Unit Location="SAN" />
+  <Unit Location="SFO" />
 </root>

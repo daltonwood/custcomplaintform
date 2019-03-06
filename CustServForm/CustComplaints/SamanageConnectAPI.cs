@@ -32,7 +32,6 @@ namespace CustServForm.CustComplaints
             if (response.IsSuccessStatusCode)
             {
                 var result = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                MessageBox.Show(postBody.ToString());
                 return true;
             }
             else
