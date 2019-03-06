@@ -56,6 +56,7 @@ namespace CustServForm.CustComplaints
 
                 DispLabel.Visible = true;
                 newDisp.Visible = true;
+                newDispIssue.Visible = true;
                 DispLabel2.Visible = true;
                 dispList.Visible = true;
                 dispIssueText.Visible = true;
@@ -78,6 +79,7 @@ namespace CustServForm.CustComplaints
 
                 DispLabel.Visible = true;
                 newDisp.Visible = true;
+                newDispIssue.Visible = true;
                 DispLabel2.Visible = true;
                 dispList.Visible = true;
                 dispIssueText.Visible = true;
@@ -100,6 +102,7 @@ namespace CustServForm.CustComplaints
 
                 DispLabel.Visible = true;
                 newDisp.Visible = true;
+                newDispIssue.Visible = true;
                 DispLabel2.Visible = true;
                 dispList.Visible = true;
                 dispIssueText.Visible = true;
@@ -121,6 +124,7 @@ namespace CustServForm.CustComplaints
 
                 DispLabel.Visible = true;
                 newDisp.Visible = true;
+                newDispIssue.Visible = true;
                 DispLabel2.Visible = true;
                 dispList.Visible = true;
                 dispIssueText.Visible = true;
@@ -141,10 +145,11 @@ namespace CustServForm.CustComplaints
                 }
 
                 DispLabel.Visible = true;
-                    newDisp.Visible = true;
-                    DispLabel2.Visible = true;
-                    dispList.Visible = true;
-                    dispIssueText.Visible = true;
+                newDisp.Visible = true;
+                newDispIssue.Visible = true;
+                DispLabel2.Visible = true;
+                dispList.Visible = true;
+                dispIssueText.Visible = true;
             }
         }
 
@@ -206,6 +211,8 @@ namespace CustServForm.CustComplaints
                 //Run UpdateOrigin method to insert new Origin Of Complaint into XML sheet
                 UpdateOrigin();
             }
+
+            Response.Redirect(Request.RawUrl);
 
         }
 
@@ -299,7 +306,7 @@ namespace CustServForm.CustComplaints
             XmlNode root = dispDoc.DocumentElement;
             XmlElement elem = dispDoc.CreateElement("Unit");
             elem.SetAttribute("DispType", val);
-            elem.SetAttribute("issue", "");
+            elem.SetAttribute("issue", newDispIssue.Text);
             root.InsertAfter(elem, root.LastChild);
             dispDoc.Save(@path);
 

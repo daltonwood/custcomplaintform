@@ -33,7 +33,7 @@
         <asp:TableCell style="vertical-align:bottom; padding-right:16px">
             <asp:TextBox runat="server" visible="true" id="originText" placeholder="New Origin of Complaint"></asp:TextBox>
         </asp:TableCell>
-        <asp:TableCell style="vertical-align:bottom">
+        <asp:TableCell style="vertical-align:bottom; padding-bottom:6px">
             <asp:TextBox runat="server" visible="true" id="originPHText" placeholder="Add Hint Here..."></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
@@ -57,7 +57,10 @@
             <asp:Label runat="server" Visible="false" ID="DispLabel">Add New Disposition</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderColor="Transparent" style="padding-bottom:15px">
-            <asp:TextBox runat="server" Visible="false" ID="newDisp"></asp:TextBox>
+            <asp:TextBox runat="server" Visible="false" ID="newDisp" placeholder="Add new disposition here"></asp:TextBox>
+        </asp:TableCell>
+         <asp:TableCell BorderWidth="15px" BorderColor="Transparent" style="padding-bottom:15px">
+            <asp:TextBox runat="server" Visible="false" ID="newDispIssue" placeholder="Add new issue here"></asp:TextBox>
         </asp:TableCell>
      </asp:TableRow>
 
@@ -70,7 +73,7 @@
             <asp:DropDownList runat="server" autopostback="true" ID="dispList" Visible="false"  Width="176px" Height="27px"></asp:DropDownList>
         </asp:TableCell>
         <asp:TableCell BorderWidth="15px" BorderColor="Transparent">
-            <asp:TextBox runat="server"  Visible="false" ID="dispIssueText" placeholder="Add Issue"></asp:TextBox>
+            <asp:TextBox runat="server"  Visible="false" ID="dispIssueText" placeholder="Add new issue here"></asp:TextBox>
         </asp:TableCell>
      </asp:TableRow>
 

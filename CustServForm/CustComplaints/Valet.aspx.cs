@@ -203,6 +203,8 @@ namespace CustServForm.CustComplaints
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);
             else
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
+
+            Response.Redirect(Request.RawUrl);
         }
     }
 }
