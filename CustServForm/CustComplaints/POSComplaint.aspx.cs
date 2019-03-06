@@ -190,6 +190,8 @@ namespace CustServForm.CustComplaints
             if(calendar.Visible.Equals(false))
                 calendar.Visible = true;
             else { calendar.Visible = false; }
+            calendar.SelectedDate = calendar.TodaysDate;
+            gcsDateTextBox.Text = DateTime.Today.ToString("MM/dd/yyyy");
         }
 
         //Submits the contents of the form to Samanage
@@ -201,7 +203,7 @@ namespace CustServForm.CustComplaints
                 CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, FPNumber: FPIDTxtBox.Text, ticket: TicketTextBox.Text);
             JObject body = formData.FormatJSON("POS Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location='POSComplaint.aspx'", true);
             else
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
 

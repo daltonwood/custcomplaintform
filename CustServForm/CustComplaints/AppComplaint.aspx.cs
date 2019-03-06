@@ -186,6 +186,8 @@ namespace CustServForm
             if (calendar.Visible.Equals(false))
                 calendar.Visible = true;
             else { calendar.Visible = false; }
+            calendar.SelectedDate = calendar.TodaysDate;
+            dateTextBox.Text = DateTime.Today.ToString("MM/dd/yyyy");
         }
         
 
@@ -200,11 +202,10 @@ namespace CustServForm
 
             JObject body = formData.FormatJSON("App Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location='AppComplaint.aspx'", true);
             else
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
 
-            Response.Redirect(Request.RawUrl);
         }
 
     }

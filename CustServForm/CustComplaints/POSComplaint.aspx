@@ -11,6 +11,9 @@
     <li><a href="KioskGate.aspx">Gate/Kiosk</a></li>
     <li><a class="active" href="#!">POS</a></li>
     <li><a href="Valet.aspx">Valet App</a></li>
+    <a href="#" class="pull-left">
+        <img src="png/PNF Logo.png" style="padding:5px" height="50px" width="275px"/>
+    </a> 
     <li style="float: right"><a href="EditForm.aspx">Add to Form</a></li>
     <li style="float: right"><a href="EditFormTable.aspx">Edit Form</a></li>
 </ul>
@@ -36,7 +39,7 @@
             <asp:Label runat="server">Customer Name</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:TextBox runat="server" ID="CustName" width="175px" Height="25px" placeholder ="Paste Customer Name"></asp:TextBox>
+        <asp:TextBox runat="server" ID="CustName" width="175px" Height="25px"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
@@ -46,7 +49,7 @@
             <asp:Label runat="server">Customer Email</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:TextBox runat="server" ID="CustEmail" width="175px" Height="25px" placeholder ="Paste Customer Email"></asp:TextBox>
+        <asp:TextBox runat="server" ID="CustEmail" width="175px" Height="25px"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
@@ -127,7 +130,7 @@
             <asp:Label runat="server">Reservation Number</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:TextBox runat="server" ID="ReservationTextBox" width="175px" Height="25px" placeholder ="Paste Reservation Number"></asp:TextBox>
+        <asp:TextBox runat="server" ID="ReservationTextBox" width="175px" Height="25px"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
@@ -137,7 +140,7 @@
             <asp:Label runat="server">Ticket Number</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:TextBox runat="server" ID="TicketTextBox" width="175px" Height="25px" placeholder ="Paste Ticket Number"></asp:TextBox>
+        <asp:TextBox runat="server" ID="TicketTextBox" width="175px" Height="25px"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
@@ -147,7 +150,7 @@
             <asp:Label runat="server">Type of Parking</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:TextBox runat="server" ID="ParkTextBox" width="175px" Height="25px" placeholder ="Paste Parking Type"></asp:TextBox>
+        <asp:TextBox runat="server" ID="ParkTextBox" width="175px" Height="25px"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 
@@ -160,7 +163,7 @@
 
     <asp:TableRow>
         <asp:TableCell>
-            <asp:TextBox TextMode="MultiLine" runat="server" id="commentBox" Height="200px" Width="400px" placeholder="Comment..." MaxLength="500"></asp:TextBox>
+            <asp:TextBox TextMode="MultiLine" runat="server" id="commentBox" Height="200px" Width="400px" placeholder="Additional Info" MaxLength="500"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
     <asp:TableRow Height="15px"></asp:TableRow></asp:Table>

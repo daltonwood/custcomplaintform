@@ -12,6 +12,9 @@
     <li><a href="KioskGate.aspx">Gate/Kiosk</a></li>
     <li><a href="POSComplaint.aspx">POS</a></li>
     <li><a href="Valet.aspx">Valet App</a></li>
+    <a href="#" class="pull-left">
+        <img src="png/PNF Logo.png" style="padding:5px" height="50px" width="275px"/>
+    </a>
     <li style="float: right"><a class="active" href="EditForm.aspx">Add to Form</a></li>
     <li style="float: right"><a href="EditFormTable.aspx">Edit Form</a></li>
 </ul>

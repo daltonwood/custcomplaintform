@@ -7,5 +7,5 @@
   <Unit DispType="Post Reservation" issue="" />
   <Unit DispType="Ease of Use" issue="" />
   <Unit DispType="Phones" issue="Breaking" />
-  <Unit DispType="Phones" issue="Phone Destroyed" />
+  <Unit DispType="Phones" issue="Phone Broken" />
 </root>

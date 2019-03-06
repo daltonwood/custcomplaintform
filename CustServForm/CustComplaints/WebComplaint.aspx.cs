@@ -196,7 +196,13 @@ namespace CustServForm
             {
                 calendar.Visible = true;
             }
-            else { calendar.Visible = false; }
+            else
+            {
+                calendar.Visible = false;
+            }
+
+            calendar.SelectedDate = calendar.TodaysDate;
+            dateTextBox.Text = DateTime.Today.ToString("MM/dd/yyyy");
         }
 
         //Submits the contents of the form to Samanage
@@ -209,11 +215,10 @@ namespace CustServForm
                 websiteAccess: webAccessRadioButtonList.SelectedValue);
             JObject body = formData.FormatJSON("Web Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location ='WebComplaint.aspx'", true);
             else
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
 
-            Response.Redirect(Request.RawUrl);
         }
     }
 }

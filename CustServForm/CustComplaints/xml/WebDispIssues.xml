@@ -8,5 +8,4 @@
   <Unit DispType="Phones" issue="Phone Destroyed" />
   <Unit DispType="Post Reservation" issue="" />
   <Unit DispType="Rates" issue="Wrong Rate" />
-  <Unit DispType="test" issue="test" />
 </root>

@@ -163,6 +163,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="CustComplaints\AppComplaint.aspx" />
     <Content Include="CustComplaints\EditFormTable.aspx" />
+    <Content Include="CustComplaints\png\PNF Logo.png" />
     <Content Include="CustComplaints\xml\AppDispIssues.xml" />
     <Content Include="CustComplaints\calendarico.png" />
     <Content Include="CustComplaints\css\reset.css" />
