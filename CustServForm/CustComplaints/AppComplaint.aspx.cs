@@ -111,23 +111,7 @@ namespace CustServForm
             }
 
         }
-
-        private void Page_Error(object sender, EventArgs e)
-        {
-            Exception exc = Server.GetLastError();
-
-            var error = exc.ToString().Substring(0, 54);
-
-            // Handle specific exception.
-            if (error.Equals("System.Web.HttpRequestValidationException (0x80004005)"))
-            {
-                MessageBox.Show("Please refrain from using the < or > character.", "Error: Invalid Input",
-                MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            // Clear the error from the server.
-            // Server.ClearError();
-        }
-
+        
         //Checks for duplicates in dropdownlists
         private bool isDuplicate(DropDownList dispList, string text)
         {
@@ -210,7 +194,7 @@ namespace CustServForm
         {
             FormData formData = new FormData();
             formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, 
-                originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, commentBox.Text, 
+                originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, Server.HtmlEncode(commentBox.Text), 
                 CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, FPNumber: FPIDTxtBox.Text, 
                 mobileOS: MobileOSList.SelectedValue);
 

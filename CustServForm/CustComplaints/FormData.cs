@@ -215,22 +215,6 @@ namespace CustServForm.CustComplaints
                 name = form + " Form",
                 priority = "Low",
                 description = CreateDescription(),
-                custom_fields_values = new
-                {
-                    custom_fields_value = new[]
-                    {
-                        new
-                        {
-                            name = "Disposition Type",
-                            value = DispositionType
-                        },
-                        new
-                        {
-                            name = "Disposition Issue",
-                            value = DispositionIssue
-                        }
-                    }
-                }
             });
             return body;
         }
@@ -238,7 +222,7 @@ namespace CustServForm.CustComplaints
         private string CreateDescription()
         {
             string fp = "\n\nFP Member: No";
-            if(_Membership == 1) { fp = "\n\nFP Member: Yes"+ "\tFP Tier:"+ FPTier + "\tFP Number: " + FPNumber; }
+            if(_Membership == 1) { fp = "\n\nFP Member: Yes"+ "    FP Tier: "+ FPTier + "    FP Number: " + FPNumber; }
             string body = "Location: " + _Location + "\n\nCustomer Email: " + _CustEmail + fp +
                 "\n\nDate of Incident: " + _Date + "\n\nOrigin of Complaint: " + _Origin + "\n\nOrigin Description: " +
                 _OriginComment + "\n\nDisposition Type: " + _DispositionType + "\n\nDisposition Issue: " + _DispositionIssue +

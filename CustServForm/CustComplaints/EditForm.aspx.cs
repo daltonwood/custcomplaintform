@@ -17,6 +17,7 @@ namespace CustServForm.CustComplaints
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
                 XmlDocument locDoc = new XmlDocument();
