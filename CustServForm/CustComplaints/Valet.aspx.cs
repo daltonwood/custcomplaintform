@@ -204,9 +204,8 @@ namespace CustServForm.CustComplaints
             if (SamanageConnectAPI.PostToSamanage(body))
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location='Valet.aspx'", true);
             else
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit. Please try again.')", true);
 
-            Response.Redirect(Request.RawUrl);
         }
     }
 }

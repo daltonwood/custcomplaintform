@@ -204,7 +204,7 @@ namespace CustServForm
             if (SamanageConnectAPI.PostToSamanage(body))
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location='AppComplaint.aspx'", true);
             else
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit. Please try again.')", true);
 
         }
 

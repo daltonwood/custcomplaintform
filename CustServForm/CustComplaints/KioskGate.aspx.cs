@@ -202,11 +202,9 @@ namespace CustServForm.CustComplaints
 
             JObject body = formData.FormatJSON("Kiosk/Gate Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location='KioskGate.aspx'", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location = 'KioskGate.aspx'", true);
             else
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit...')", true);
-
-            Response.Redirect(Request.RawUrl);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Failed to Submit. Please try again.')", true);
         }
     }
 }

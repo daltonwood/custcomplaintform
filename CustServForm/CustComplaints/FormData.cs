@@ -212,9 +212,24 @@ namespace CustServForm.CustComplaints
 
             JObject body = JObject.FromObject(new
             {
-                name = form + " Form",
-                priority = "Low",
-                description = CreateDescription(),
+                incident = new
+                {
+                    name = form + " Form",
+                    priority = "Low",
+                    assignee = new
+                    {
+                        email = "amassey@pnf.com"
+                    },
+                    requester = new
+                    {
+                        email = "amassey@pnf.com"
+                    },
+                    category = new
+                    {
+                        name = "Complaint form demo"
+                    },
+                    description = CreateDescription(),
+                }
             });
             return body;
         }
