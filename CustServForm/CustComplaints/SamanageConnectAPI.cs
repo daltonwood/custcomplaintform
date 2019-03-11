@@ -27,7 +27,6 @@ namespace CustServForm.CustComplaints
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.samanage.v2.1+xml"));
             client.DefaultRequestHeaders.Add("X-Samanage-Authorization", "Bearer " + accessToken);
             //var body = postBody;
-            MessageBox.Show(postBody.ToString());
             StringContent content = new StringContent(postBody.ToString(), Encoding.UTF8, "application/json");
             var response = client.PostAsync(requestUri, content).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)

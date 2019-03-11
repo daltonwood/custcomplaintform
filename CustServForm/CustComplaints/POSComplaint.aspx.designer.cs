@@ -148,13 +148,13 @@ namespace CustServForm.CustComplaints {
         protected global::System.Web.UI.WebControls.TextBox TicketTextBox;
         
         /// <summary>
-        /// ParkTextBox control.
+        /// parkingDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ParkTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList parkingDDL;
         
         /// <summary>
         /// commentBox control.

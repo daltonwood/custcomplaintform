@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <web>
     <Unit DispType="Accounts" issue="Sign in" />
     <Unit DispType="Accounts" issue="Can't edit profile" />
     <Unit DispType="Discounts" issue="Does Not Appear" />
@@ -9,18 +8,5 @@
     <Unit DispType="Phones" issue="Phone Destroyed" />
     <Unit DispType="Post Reservation" issue="" />
     <Unit DispType="Rates" issue="Wrong Rate" />
-  </web>
-  <IncidentCatergories>
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-    <Incident Name="" />
-  </IncidentCatergories>
 </root>
 

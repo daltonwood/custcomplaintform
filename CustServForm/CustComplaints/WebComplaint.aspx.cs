@@ -34,7 +34,7 @@ namespace CustServForm
                 var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
                 dispDoc.Load(dispPath);
                 dispList.Items.Clear();
-                XmlNodeList dispNode = dispDoc.SelectNodes("/root/web/Unit");
+                XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
                 foreach (XmlElement n in dispNode)
                 {
                     ListItem i = new ListItem();
@@ -47,7 +47,7 @@ namespace CustServForm
 
                 //Load disposition issues into dropdown menu
                 dispDoc.Load(dispPath);
-                dispNode = dispDoc.SelectNodes("/root/web/Unit");
+                dispNode = dispDoc.SelectNodes("/root/Unit");
                 dispDetails.Items.Clear();
                 foreach (XmlElement n in dispNode)
                 {
@@ -135,7 +135,7 @@ namespace CustServForm
             var path = Server.MapPath(@ConfigurationManager.AppSettings["originPath"]);
             string val = originList.SelectedItem.Text;
             origDoc.Load(path);
-            XmlNodeList origTypeNode = origDoc.SelectNodes("/root/web/Unit");
+            XmlNodeList origTypeNode = origDoc.SelectNodes("/root/Unit");
             foreach (XmlElement n in origTypeNode)
             {
                 if (n.Attributes[0].Value == originList.SelectedValue)
@@ -154,7 +154,7 @@ namespace CustServForm
             var dispPath = Server.MapPath(@ConfigurationManager.AppSettings["webPath"]);
             //Load disposition issues into dropdown menu
             dispDoc.Load(dispPath);
-            XmlNodeList dispNode = dispDoc.SelectNodes("/root/web/Unit");
+            XmlNodeList dispNode = dispDoc.SelectNodes("/root/Unit");
             dispDetails.Items.Clear();
             foreach (XmlElement n in dispNode)
             {
@@ -212,7 +212,7 @@ namespace CustServForm
             formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, dateTextBox.Text, 
                 originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, Server.HtmlEncode(commentBox.Text), 
                 CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, FPNumber: FPIDTxtBox.Text, 
-                websiteAccess: webAccessRadioButtonList.SelectedValue);
+                websiteAccess: webAccessRadioButtonList.SelectedValue, ParkingType: parkingDDL.SelectedValue);
             JObject body = formData.FormatJSON("Web Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location ='WebComplaint.aspx'", true);

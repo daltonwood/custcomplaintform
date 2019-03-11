@@ -199,8 +199,9 @@ namespace CustServForm.CustComplaints
         {
             FormData formData = new FormData();
             formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, gcsDateTextBox.Text, 
-                originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, Server.HtmlEncode(commentBox.Text), 
-                CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, FPNumber: FPIDTxtBox.Text, ticket: TicketTextBox.Text);
+                originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text, 
+                Server.HtmlEncode(commentBox.Text), CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, 
+                FPNumber: FPIDTxtBox.Text, ticket: TicketTextBox.Text, ParkingType: parkingDDL.SelectedValue);
             JObject body = formData.FormatJSON("POS Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Submitted Successfully!'); window.location='POSComplaint.aspx'", true);

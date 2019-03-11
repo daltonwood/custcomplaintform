@@ -156,7 +156,14 @@
             <asp:Label runat="server">Type of Parking</asp:Label>
         </asp:TableCell>
         <asp:TableCell BorderWidth="10px" BorderColor="Transparent">
-        <asp:TextBox runat="server" ID="ParkTextBox" width="175px" Height="25px"></asp:TextBox>
+            <asp:dropdownlist runat="server" ID="parkingDDL" width="175px" Height="25px" AutoPostBack="true">
+                <asp:listitem text="Self Uncovered" value="Self Uncovered"></asp:listitem>
+                <asp:listitem text="Self Covered" value="Self Covered"></asp:listitem>
+                <asp:listitem text="Valet Uncovered" value="Valet Uncovered"></asp:listitem>
+                <asp:ListItem text="Valet Covered" value="Valet Covered"></asp:ListItem>
+                <asp:ListItem Text="Texas-Sized" Value="Texas-Sized"></asp:ListItem>
+                <asp:ListItem Text="Preferred Parking" Value="Preferred Parking"></asp:ListItem>
+            </asp:dropdownlist>        
         </asp:TableCell>
     </asp:TableRow>
 

@@ -192,6 +192,19 @@ namespace CustServForm.CustComplaints
             }
         }
 
+        private string _Parking;
+        public string Parking
+        {
+            get
+            {
+                return _Parking;
+            }
+            set
+            {
+                _Parking = value;
+            }
+        }
+
 
         private string _Comments;
 
@@ -216,14 +229,6 @@ namespace CustServForm.CustComplaints
                 {
                     name = form + " Form",
                     priority = "Low",
-                    assignee = new
-                    {
-                        email = "amassey@pnf.com"
-                    },
-                    requester = new
-                    {
-                        email = "amassey@pnf.com"
-                    },
                     category = new
                     {
                         name = "Complaint form demo"
@@ -238,10 +243,11 @@ namespace CustServForm.CustComplaints
         {
             string fp = "\n\nFP Member: No";
             if(_Membership == 1) { fp = "\n\nFP Member: Yes"+ "    FP Tier: "+ FPTier + "    FP Number: " + FPNumber; }
+
             string body = "Location: " + _Location + "\n\nCustomer Email: " + _CustEmail + fp +
                 "\n\nDate of Incident: " + _Date + "\n\nOrigin of Complaint: " + _Origin + "\n\nOrigin Description: " +
                 _OriginComment + "\n\nDisposition Type: " + _DispositionType + "\n\nDisposition Issue: " + _DispositionIssue +
-                "\n\nReservation: " + _Reservation;
+                "\n\nReservation: " + _Reservation + "\n\nParking Type: " + _Parking;
 
             if (_Ticket!=null) {body += "\n\nTicket: " + _Ticket; }
             else if(_MobileOS != null) { body += "\n\nMobile OS: " + _MobileOS; }
@@ -255,7 +261,7 @@ namespace CustServForm.CustComplaints
 
         public void Fill(string loc, int member, string custEmail, string date, string origin, string originComment, string disp, 
             string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket, [Optional] string mobileOS, 
-            [Optional] string websiteAccess, string FPTier, string FPNumber)
+            [Optional] string websiteAccess, string FPTier, string FPNumber, string ParkingType)
         {
             _Location = loc;
             _Membership = member;
@@ -272,6 +278,7 @@ namespace CustServForm.CustComplaints
             _websiteAccess = websiteAccess;
             _FPNumber = FPNumber;
             _FPTier = FPTier;
+            _Parking = ParkingType;
         }
     }
 }

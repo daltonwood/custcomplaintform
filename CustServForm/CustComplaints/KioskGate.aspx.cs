@@ -198,7 +198,7 @@ namespace CustServForm.CustComplaints
             formData.Fill(locDDList.SelectedItem.Text, Convert.ToInt32(FP_Radio.SelectedValue), CustEmail.Text, gcsDateTextBox.Text, 
                 originList.SelectedItem.Text, Server.HtmlEncode(originTxtBox.Text), dispList.SelectedItem.Text, dispDetails.SelectedItem.Text,
                 Server.HtmlEncode(commentBox.Text), CustName.Text, ReservationTextBox.Text, FPTier: FPTier.SelectedValue, FPNumber: FPIDTxtBox.Text, 
-                ticket: TicketTextBox.Text);
+                ticket: TicketTextBox.Text, ParkingType: parkingDDL.SelectedValue);
 
             JObject body = formData.FormatJSON("Kiosk/Gate Complaint");
             if (SamanageConnectAPI.PostToSamanage(body))
