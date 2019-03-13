@@ -153,6 +153,8 @@ namespace CustServForm.CustComplaints
             xmlDoc.Save(@locationPath);
             locTable.EditIndex = -1;
 
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditFormTable.aspx'", true);
+
             Page_Load(Server, e);
         }
 
@@ -200,6 +202,8 @@ namespace CustServForm.CustComplaints
 
             xmlDoc.Save(@appPath);
             appTable.EditIndex = -1;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditFormTable.aspx'", true);
 
             Page_Load(Server, e);
         }
@@ -249,6 +253,8 @@ namespace CustServForm.CustComplaints
             xmlDoc.Save(@kioskPath);
             kioskTable.EditIndex = -1;
 
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditFormTable.aspx'", true);
+
             Page_Load(Server, e);
         }
 
@@ -297,6 +303,8 @@ namespace CustServForm.CustComplaints
             xmlDoc.Save(@originPath);
             originTable.EditIndex = -1;
 
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditFormTable.aspx'", true);
+
             Page_Load(Server, e);
         }
 
@@ -343,6 +351,8 @@ namespace CustServForm.CustComplaints
             
             xmlDoc.Save(@posPath);
             posTable.EditIndex = -1;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditFormTable.aspx'", true);
 
             Page_Load(Server, e);
         }
@@ -393,6 +403,8 @@ namespace CustServForm.CustComplaints
             xmlDoc.Save(@valetPath);
             valetTable.EditIndex = -1;
 
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditFormTable.aspx'", true);
+
             Page_Load(Server, e);
         }
 
@@ -439,6 +451,8 @@ namespace CustServForm.CustComplaints
             
             xmlDoc.Save(@webPath);
             webTable.EditIndex = -1;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditFormTable.aspx'", true);
 
             Page_Load(Server, e);
         }

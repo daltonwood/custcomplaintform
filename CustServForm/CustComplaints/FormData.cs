@@ -233,6 +233,14 @@ namespace CustServForm.CustComplaints
                     {
                         name = "Complaint form demo"
                     },
+                    //subcategory = new
+                    //{
+                    //    name = form
+                    //},
+                    site = new
+                    {
+                        name = "PNF-"+_Location
+                    },
                     description = CreateDescription(),
                 }
             });
@@ -263,7 +271,9 @@ namespace CustServForm.CustComplaints
             string dispIssue, string comments, string CustName, string reservation, [Optional] string ticket, [Optional] string mobileOS, 
             [Optional] string websiteAccess, string FPTier, string FPNumber, string ParkingType)
         {
-            _Location = loc;
+            if (loc.Equals("Fly")) { _Location = "Atlanta"; }
+            else if (loc.Equals("Plus")) { _Location = "PLUS"; }
+            else { _Location = loc; }
             _Membership = member;
             _Date = date;
             _Origin = origin;

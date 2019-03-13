@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <Unit Location="ATL/Fly" />
-  <Unit Location="ATL/Plus" />
-  <Unit Location="BNA" />
-  <Unit Location="CLE" />
-  <Unit Location="DFW" />
-  <Unit Location="FLL" />
-  <Unit Location="IAH" />
+  <Unit Location="Fly" />
+  <Unit Location="Plus" />
+  <Unit Location="Nashville (BNA)" />
+  <Unit Location="Cleveland" />
+  <Unit Location="Dallas" />
+  <Unit Location="Ft. Lauderdale" />
+  <Unit Location="Houston" />
   <Unit Location="LAX" />
-  <Unit Location="MDW" />
-  <Unit Location="MIA" />
-  <Unit Location="MSP" />
-  <Unit Location="MSY" />
-  <Unit Location="OAK" />
-  <Unit Location="ONT" />
-  <Unit Location="PHL" />
-  <Unit Location="SAN" />
-  <Unit Location="SFO" />
+  <Unit Location="Chicago" />
+  <Unit Location="Miami" />
+  <Unit Location="Minneapolis" />
+  <Unit Location="New Orleans" />
+  <Unit Location="Oakland (OAK)" />
+  <Unit Location="Ontario" />
+  <Unit Location="Philadelphia (PHL)" />
+  <Unit Location="San Diego" />
 </root>

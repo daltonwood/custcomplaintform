@@ -16,15 +16,25 @@ namespace CustServForm.CustComplaints
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Loading location dropdown
-            var path = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
-            XmlDocument locDoc = new XmlDocument();
-            locDoc.Load(path);
-            locDDList.Items.Clear();
-
+            
             //Initial page loading
             if (!IsPostBack)
             {
+                //Loading location dropdown
+                var path = Server.MapPath(@ConfigurationManager.AppSettings["locationPath"]);
+                XmlDocument locDoc = new XmlDocument();
+                locDoc.Load(path);
+                locDDList.Items.Clear();
+
+                //Load Location XML list into Location Drop Down Menu
+                XmlNodeList node = locDoc.SelectNodes("/root/Unit");
+                foreach (XmlElement n in node)
+                {
+                    ListItem i = new ListItem();
+                    i.Text = n.Attributes[0].Value;
+                    locDDList.Items.Add(i);
+                }
+
                 calendar.Visible = false;
 
                 //Load Disposition Categories into Drop Down Menu
@@ -78,14 +88,6 @@ namespace CustServForm.CustComplaints
                         originTxtBox.Attributes.Add("placeholder", n.Attributes[1].Value);
                     }
                 }
-            }
-            //Load Location XML list into Location Drop Down Menu
-            XmlNodeList node = locDoc.SelectNodes("/root/Unit");
-            foreach (XmlElement n in node)
-            {
-                ListItem i = new ListItem();
-                i.Text = n.Attributes[0].Value;
-                locDDList.Items.Add(i);
             }
             //Resizes origin textbox to fit text
             int charRows = 0;
