@@ -212,7 +212,7 @@ namespace CustServForm.CustComplaints
                 UpdateOrigin();
             }
 
-            Response.Redirect(Request.RawUrl);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "MyScript", "alert('Form Edited Successfully!'); window.location='EditForm.aspx'", true);
 
         }
 
@@ -236,7 +236,6 @@ namespace CustServForm.CustComplaints
                 .OrderBy(s => (string)s.Attribute("Location"));
             XDocument newDoc = new XDocument(new XElement("root", rootDoc));
             newDoc.Save(@path);
-            MessageBox.Show("Location Added!");
         }
 
         private void UpdateDispIssues()
@@ -277,7 +276,6 @@ namespace CustServForm.CustComplaints
                 .OrderBy(s => (string)s.Attribute("DispType"));
             XDocument newDoc = new XDocument(new XElement("root", rootDoc));
             newDoc.Save(@path);
-            MessageBox.Show("Disposition Issue Added!");
         }
 
         //Add new Disposition Category to XML sheet
@@ -319,7 +317,6 @@ namespace CustServForm.CustComplaints
                 .OrderBy(s => (string)s.Attribute("DispType"));
             XDocument newDoc = new XDocument(new XElement("root", rootDoc));
             newDoc.Save(@path);
-            MessageBox.Show("Disposition Type Added!");
         }
 
         //Add new origin of complaint and hint
@@ -332,7 +329,7 @@ namespace CustServForm.CustComplaints
             XmlNode root = origDoc.DocumentElement;
             XmlElement elem = origDoc.CreateElement("Unit");
             elem.SetAttribute("OriginType", val);
-            elem.SetAttribute("Hint", originPHText.Text);
+            elem.SetAttribute("Hint", "Enter details here");
             root.InsertAfter(elem, root.LastChild);
             origDoc.Save(@path);
 
@@ -345,7 +342,6 @@ namespace CustServForm.CustComplaints
                 .OrderBy(s => (string)s.Attribute("OriginType"));
             XDocument newDoc = new XDocument(new XElement("root", rootDoc));
             newDoc.Save(@path);
-            MessageBox.Show("Origin Added!");
         }
     }
 }

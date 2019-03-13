@@ -117,7 +117,7 @@
             </asp:dropdownlist>
         </asp:TableCell>
         <asp:TableCell borderWidth="15px" BorderColor="Transparent">
-            <asp:TextBox runat="server"  AutoPostBack="true"  Placeholder="Paste Listen 360" Visible="true" ID="originTxtBox"></asp:TextBox>
+            <asp:TextBox runat="server"  AutoPostBack="true"  Placeholder="Enter details here" Visible="true" ID="originTxtBox"></asp:TextBox>
         </asp:TableCell>
     </asp:TableRow>
 

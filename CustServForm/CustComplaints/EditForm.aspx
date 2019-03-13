@@ -37,7 +37,7 @@
             <asp:TextBox runat="server" visible="true" id="originText" placeholder="New Origin of Complaint"></asp:TextBox>
         </asp:TableCell>
         <asp:TableCell style="vertical-align:bottom; padding-bottom:6px">
-            <asp:TextBox runat="server" visible="true" id="originPHText" placeholder="Add Hint Here..."></asp:TextBox>
+           
         </asp:TableCell>
     </asp:TableRow>
 
