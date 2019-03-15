@@ -233,10 +233,10 @@ namespace CustServForm.CustComplaints
                     {
                         name = "Complaint form demo"
                     },
-                    //subcategory = new
-                    //{
-                    //    name = form
-                    //},
+                    subcategory = new
+                    {
+                        name = form
+                    },
                     site = new
                     {
                         name = "PNF-"+_Location
